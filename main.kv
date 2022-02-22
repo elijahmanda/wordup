@@ -1,5 +1,5 @@
 #:import gch kivy.utils.get_color_from_hex
-#:import sleep time.sleep
+#:import gch kivy.utils.get_color_from_hex
 <MagicButton@MagicBehavior+MDIconButton>
 
 <MySwiper@MDSwiperItem>
@@ -134,47 +134,98 @@
             right_action_items : [["help", lambda x : print("help")]]
             padding : "12dp"
             elevation : 14
-        MDCard :
-            id : help_card
-            size_hint_y: None
-            height: dp(100)
-            radius : [16,16,0,0]
-            elevation : 16
-            orientation: 'vertical'
-            MDLabel:
-                text: "If you are experiencing any abuse feel comfortable to report to any of the folowing:"
-                color : 0,0,0,1
-                size_hint: None, None
-                height : help_card.height
-                width : help_card.width
-                halign : "center"
-                font_size : 20
- 
-
-        ScrollView :
-            MDList:
-                MDCard :
-                    id : trust_circle_card
-                    size_hint_max_y: None
-                    height: dp(200)
-                    elevation : 14
-                    radius : [16,16,0,0]
-                    orientation: 'vertical'
-                    padding : dp(10)
-                    MDGridLayout:
-                        cols : 1
-                        padding : dp(5)
+        MDGridLayout:
+            cols : 1
+            spacing : "12dp"
+            ScrollView:
+                MDList :
+                    spacing : "12dp"
+                    MDCard :
+                        id : help_card
                         size_hint_y: None
-                        height: int(trust_circle_card.height * 0.7)
+                        height: dp(100)
+                        radius : [16,16,0,0]
+                        elevation : 16
+                        orientation: 'vertical'
                         MDLabel:
-                            text: "Feeling low? Don't worry try to share how you feel about your current situation to your trust circles"
-                            color: 0,0,0,1
+                            text: "If you are experiencing any abuse feel comfortable to report to any of the folowing:"
+                            color : 0,0,0,1
+                            size_hint: None, None
+                            height : help_card.height
+                            width : help_card.width
                             halign : "center"
-                    MDFloatLayout:
-                        MDIconButton:
-                            icon: "human-greeting-proximity"
-                            pos_hint: {'center_x': 0.5}
-                        MDRaisedButton :
-                            text : "Report"
-                            pos_hint: {'center_x': 0.75, 'center_y':.3}
-                
+                            font_size : 20
+                            font_style : "Subtitle1"
+                    MDCard:
+                        id : card_trust
+                        size_hint_y: None
+                        height : dp(100)
+                        orientation : "vertical"
+                        padding : dp(10)
+                        spacing : dp(10)
+                        radius : 16
+                        elevation : 16
+                        MDLabel:
+                            text : "Get help from Police"
+                            halign : "center"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                        MDGridLayout:
+                            cols : 2
+                            spacing : "12dp"
+                            size_hint_x: None
+                            width: card_trust.width
+                            MDIconButton:
+                                icon : "police-badge-outline"
+                                md_bg_color: gch("#5e8ffd")
+                            MDFlatButton:
+                                text : "Report"  
+                    MDCard:
+                        id : card_trust
+                        size_hint_y: None
+                        height : dp(100)
+                        orientation : "vertical"
+                        padding : dp(10)
+                        spacing : dp(10)
+                        radius : 16
+                        elevation : 16
+                        MDLabel:
+                            text : "Get help from Trust Circle"
+                            halign : "center"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                        MDGridLayout:
+                            cols : 2
+                            spacing : "12dp"
+                            size_hint_x: None
+                            width: card_trust.width
+                            MDIconButton:
+                                icon : "human-greeting-proximity"
+                                md_bg_color: gch("#5efdd7")
+                            MDFlatButton:
+                                text : "Report"  
+                    MDCard:
+                        id : card_trust
+                        size_hint_y: None
+                        height : dp(100)
+                        orientation : "vertical"
+                        padding : dp(10)
+                        spacing : dp(10)
+                        radius : 16
+                        elevation : 16
+                        MDLabel:
+                            text : "Get help from Zicta"
+                            halign : "center"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                        MDGridLayout:
+                            cols : 2
+                            spacing : "12dp"
+                            size_hint_x: None
+                            width: card_trust.width
+                            MDIconButton:
+                                icon : "battlenet"
+                                md_bg_color: gch("#fde65e")
+                            MDFlatButton:
+                                text : "Report"  
+
