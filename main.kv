@@ -1,0 +1,61 @@
+#:import gch kivy.utils.get_color_from_hex
+
+<HomeScreen> :
+    id : root_screen 
+    MDGridLayout:
+        cols : 1
+        MDToolbar :
+            id : home_toolbar
+            type : "top"
+            title : "WordUp"
+            type_height : "medium"
+            md_bg_color: gch("#7a0089")
+            right_action_items : [["hand-heart-outline"], ["cogs"]]
+            left_action_items : [["assets/su.png"]]
+            padding : "12dp"
+            elevation : 14
+        MDBottomNavigation:
+            panel_color : gch("#7a0089")
+            on_panel_color : gch("#ffffff")
+
+            MDBottomNavigationItem:
+                name: 'home'
+                text: 'Home'
+                icon: 'home-variant-outline'
+
+                MDGridLayout:
+                    id : sroll_grid
+                    cols : 1
+                    ScrollView :
+                        MDGridLayout:
+                            cols : 1
+                            id : card_grid
+                            padding : "12dp"
+
+                            MDCard :
+                                id : card_
+                                size_hint: None, None
+                                height: dp(200)
+                                width : root_screen.width - 5
+                                radius : 16
+                                elevation : 12
+                                padding : "12dp"
+                                        
+
+            MDBottomNavigationItem:
+                name: 'word_ups'
+                text: 'Your WordUps'
+                icon: 'account-tie-voice'
+
+                MDLabel:
+                    text: 'Your WordUps'
+                    halign: 'center'
+
+            MDBottomNavigationItem:
+                name: 'report_screen'
+                text: 'Get help'
+                icon: 'mother-heart'
+
+                MDLabel:
+                    text: 'Help screen'
+                    halign: 'center'
