@@ -1,36 +1,37 @@
-from logging import root
 from kivymd.app import MDApp
 from kivy.lang import Builder
-from kivymd.uix.screen import MDScreen
+from libs.screens.home_page import HomePage
+from libs.screens.support_page import SupportPage
+from libs.screens.trust_circles import TrustCirclesPage
+from libs.screens.settings_page import SettingsPage
 from kivy.uix.screenmanager import ScreenManager
-from kivymd.uix.label import MDLabel
-from kivymd.theming import ThemeManager
+from kivy.core.window import Window
+Window.size=[300, 600]
 
-
-root = Builder.load_file("main.kv")
-
-class HomeScreen(MDScreen) :
-    pass
-
-class SupportScreen(MDScreen) :
-    pass
-class WordUpApp(MDApp) :
-
+class WordUpApp(MDApp):
     def build(self):
-        self.theme_cls  = ThemeManager()
-        self.theme_cls.primary_palette = "Red"
-        self.sm = ScreenManager()
-        self.sm.add_widget(HomeScreen(name="home"))
-        self.sm.add_widget(SupportScreen(name="support"))
-        return self.sm
+        self.theme_cls.theme_style='Light'
+        self.theme_cls.primary_palette="DeepPurple"
+        self.theme_cls.primary_hue = "500"
+        self.load_all_kv_files()
+        global sm
+        sm = ScreenManager()
+        sm.add_widget(HomePage())
+        sm.add_widget(SupportPage())
+        sm.add_widget(TrustCirclesPage())
+        sm.add_widget(SettingsPage())
+        return sm
+        
+        
+    def load_all_kv_files(self):
+        Builder.load_file('libs/screens/home_page.kv')
+        Builder.load_file('libs/components/bottom_nav.kv')
+        Builder.load_file('libs/screens/support_page.kv')
+        Builder.load_file('libs/screens/trust_circles.kv')
+        Builder.load_file('libs/screens/settings_page.kv')
+        
     
-    def switch_screen(self, name_, direction):
-        self.sm.current = name_
-        self.sm.transition.direction = direction
-        self.sm.transition.duration = .2
-        return self.sm
-            
-
-
-
-WordUpApp().run()
+        
+if __name__=='__main__':
+    WordUpApp().run()
+        

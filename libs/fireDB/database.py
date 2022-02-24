@@ -14,18 +14,15 @@ firebase = pyrebase.initialize_app(firebaseConfig)
 db = firebase.database()
 auth = firebase.auth()
 storage = firebase.storage()
+import random
 
 
 def post_data(text):
-    file = open("next_id.txt", "r+")
-    id = file.read().strip()
-    id = int(id)
+    id = random.random()
     print(id)
-    data = {f'word_up{id}': str(text)}
+    data = {'word_up': str(text)}
     try :
         db.push(data)
     except Exception as e:
         print(e)
-    file1 = open("next_id.txt","w")#write mode
-    file1.write(str(id + 1)+" \n")
-    file1.close()
+    
