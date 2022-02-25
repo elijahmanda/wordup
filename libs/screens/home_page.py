@@ -7,7 +7,7 @@ from libs.components.card_custom import MD3Card
 from kivy.utils import get_color_from_hex as gch
 from libs.screens.ui_manager import ScreenManager
 from kivy.clock import Clock
-from libs.fireDB.database import post_data
+from libs.fireDB.database import post_data, retrieve_data
 
 class HomePage(MDScreen):
     def __init__(self, *kwargs):
@@ -16,9 +16,11 @@ class HomePage(MDScreen):
         btm_bar = self.ids['btm_nav']
         icon = btm_bar.ids['home_icon']
         icon.icon_color = gch('#7ceaee')
-       
+
+    def on_enter(self, *args):
+        self.make_card_from_database()
+        
     def add_card(self, text):
-        post_data(text)
         self.style='elevated'       
         item=MDSwiperItem()
         card = MD3Card(
@@ -39,4 +41,14 @@ class HomePage(MDScreen):
         item.add_widget(card)
         self.ids['swiper'].add_widget(item)
                 
+    def make_card_from_database(self, *args):
+        wordup_text = retrieve_data()
+        for wordup in wordup_text:
+            self.add_card(wordup)    
+
+    def post_card(self, text):
+        post_data(text)
+        self.add_card(text)
+    
+    
        
