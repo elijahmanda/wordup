@@ -1,3 +1,8 @@
+__version__="1.0"
+from kivy.utils import platform
+if platform == "android":
+    from android.permissions import request_permissions, Permission
+    request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE,Permission.INTERNET])
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from libs.screens.home_page import HomePage
