@@ -1,4 +1,4 @@
-__version__="1.0"
+__version__="1.0.0"
 from kivy.utils import platform
 if platform == "android":
     from android.permissions import request_permissions, Permission
