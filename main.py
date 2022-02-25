@@ -9,8 +9,14 @@ from libs.screens.home_page import HomePage
 from libs.screens.support_page import SupportPage
 from libs.screens.trust_circles import TrustCirclesPage
 from libs.screens.settings_page import SettingsPage
+from libs.screens.signup_page import SignUpPage
+from libs.screens.verify_page import VerifyPage
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
+from kivy.core.text import LabelBase
+from kivymd.font_definitions import theme_font_styles
+
+
 Window.size=[300, 600]
 
 class WordUpApp(MDApp):
@@ -21,10 +27,13 @@ class WordUpApp(MDApp):
         self.load_all_kv_files()
         global sm
         sm = ScreenManager()
+        sm.add_widget(SignUpPage())
+        sm.add_widget(VerifyPage())
         sm.add_widget(HomePage())
         sm.add_widget(SupportPage())
         sm.add_widget(TrustCirclesPage())
         sm.add_widget(SettingsPage())
+
         return sm
         
         
@@ -34,7 +43,8 @@ class WordUpApp(MDApp):
         Builder.load_file('libs/screens/support_page.kv')
         Builder.load_file('libs/screens/trust_circles.kv')
         Builder.load_file('libs/screens/settings_page.kv')
-    
+        Builder.load_file('libs/screens/signup_page.kv')
+        Builder.load_file('libs/screens/verify_page.kv')
         
 if __name__=='__main__':
     WordUpApp().run()

@@ -1,0 +1,84 @@
+#:import colors kivymd.color_definitions.colors
+#:import gch kivy.utils.get_color_from_hex
+#:import environ os.environ
+
+
+<SignUpPage>
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    MDBoxLayout:
+        id: box_1
+        orientation: "vertical"
+        size_hint: .2, .2
+        pos_hint: {"center_x": .5, "center_y": .7}
+        spacing: "10dp"
+        
+
+        FitImage:
+            source: "assets/logo.jpeg"
+            size_hint: None, None
+            size : 200, 200
+            pos_hint: {"center_x": .5}
+
+        MDLabel:
+            text: "WORDUP"
+            adaptive_size: True
+            text_size: None, self.font_size
+            theme_text_color: "Primary"
+            font_style: "H6"
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            font_name: "data/ttf/JetBrainsMono-Medium.ttf"
+        MDLabel:
+            text: "Hi Welcome to WordUp!!!."
+            adaptive_size: True
+            text_size: None, self.font_size
+            theme_text_color: "Primary"
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            font_name: "data/ttf/JetBrainsMono-Medium.ttf"
+            font_style : "Button"
+
+    MDBoxLayout:
+        id: box_2
+        adaptive_height: True
+        orientation: "vertical"
+        spacing: "10dp"
+        padding: "10dp"
+        pos_hint: {"center_y": .3}
+
+        MDTextField:
+            mode : "fill"
+            radius : [20,]
+            hint_text: "First name"
+
+        MDTextField:
+            mode : "fill"
+            radius : [20,]
+            hint_text: "Second name"
+
+        MDTextField:
+            mode : "fill"
+            radius : [20,]
+            hint_text: "Username"
+
+        Widget:
+            size_hint_y: None
+            height: "40dp"
+
+        BoxLayout:
+            spacing: "10dp"
+
+            Widget:
+
+            MDFlatButton:
+                id: button_cancel
+                text: "CANCEL"
+
+            MDFillRoundFlatButton:
+                id: button_next
+                text: "NEXT"
+                on_release: app.root.current = "verify"
