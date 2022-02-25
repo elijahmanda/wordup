@@ -29,7 +29,6 @@ class WordUpApp(MDApp):
         Builder.load_file('libs/screens/support_page.kv')
         Builder.load_file('libs/screens/trust_circles.kv')
         Builder.load_file('libs/screens/settings_page.kv')
-        
     
         
 if __name__=='__main__':

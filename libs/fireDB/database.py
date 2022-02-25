@@ -18,11 +18,15 @@ import random
 
 
 def post_data(text):
-    id = random.random()
-    print(id)
     data = {'word_up': str(text)}
     try :
         db.push(data)
     except Exception as e:
         print(e)
     
+def retrieve_data():
+    word_text = []
+    data = db.get()
+    for wordup in data.each():
+        word_text.append(wordup.val()["word_up"])
+    return word_text
