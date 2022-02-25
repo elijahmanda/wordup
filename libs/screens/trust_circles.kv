@@ -1,0 +1,44 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import BottomNav libs.components.bottom_nav.BottomNav
+#:import BaseBox libs.components.base_box.BaseBox
+
+<AppBarTru@MDBoxLayout>
+    md_bg_color : gch('#b300b1')
+    padding : '5dp'
+    adaptive_height : True
+    
+    MDIconButton :
+        id : left_btn
+        icon : 'arrow-left'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+        on_release :
+            app.root.current='home'
+    MDLabel :
+        text : 'Trust Circles'
+        theme_text_color : 'Custom'
+        text_color : gch('#ffffff')
+        halign : 'center'
+        valign : 'center'
+        font_size : 30
+        
+    MDIconButton :
+        id : right_btn
+        icon : 'information-outline'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+
+<TrustCirclesPage>:
+    md_bg_color : get_color_from_hex('#ffffff')
+    
+    BaseBox :
+        orientation : 'vertical'
+        AppBarTru:
+            id : app_bar
+        MDLabel:
+            text: "Trust circles"
+            halign : "center"
+        BottomNav:
+            id : btm_nav
+        
+        
