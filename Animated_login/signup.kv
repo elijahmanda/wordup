@@ -1,5 +1,6 @@
 
-<SignUp1>:
+Screen:
+    id : root_s
     MDFloatLayout:
         MDLabel:
             id : label
@@ -8,7 +9,6 @@
             halign : 'center'
             font_style : 'H4'
             bold : True
-            font_name: "data/otf/Sofia-Regular.otf"
         MDLabel:
             id : label1
             text: 'Hi!!! Create an account'
@@ -16,63 +16,53 @@
             halign : 'center'
             font_style : 'H6'
             bold : True
-            font_name: "data/ttf/Amatic-Bold.ttf"
         Image:
             id : image
             source: 'assets/emoo.jpg'
-            pos_hint : {'center_x': .5, 'center_y': .84}
+            pos_hint : {'center_x': .5, 'center_y': .8}
             size_hint: 1,1
         MDTextField:
             id : fname
             hint_text : 'First name'
-            pos_hint : {'center_x': .5, 'center_y': .64}
+            pos_hint : {'center_x': .5, 'center_y': .65}
             size_hint_x: .8
             mode : 'fill'
             radius : [24,]
             color_mode: 'custom'
             line_color_focus: 1,0,0,1
-        MDTextField:    
+            on_focus: 
+                image.source=app.first()
+        MDTextField:
             id : sname
             hint_text : 'Second name'
-            pos_hint : {'center_x': .5, 'center_y': .54}
+            pos_hint : {'center_x': .5, 'center_y': .50}
             size_hint_x: .8
             mode : 'fill'
             radius : [24,]
             color_mode: 'custom'
             line_color_focus: 1,0,0,1
+            on_focus:
+                image.source=app.second()
         MDTextField:
             id : username
             hint_text : 'Preferred username'
             helper_text : 'Optional. Will be made for you if left blank'
-            pos_hint : {'center_x': .5, 'center_y': .44}
+            pos_hint : {'center_x': .5, 'center_y': .35}
             mode : 'fill'
             radius : [24,]
             size_hint_x: .8
             color_mode: 'custom'
             line_color_focus: 1,0,0,1
-        MDLabel:
-            id : datelabel
-            text: "Choose your date of birth"
-            size_hint_y: None
-            height: self.texture_size[1]
-            halign : "center"
-            adaptive_width: True
-            pos_hint: {'center_x': 0.4,'center_y': 0.34}
-        MDIconButton:
-            id : dateicon
-            icon: "assets/dob.png"
-            user_font_size: "15sp"
-            pos_hint: {'center_x': 0.8,'center_y': 0.34}
-       
+            on_focus: 
+                image.source=app.third()
         MDRaisedButton:
             id : login
-            text: ' NEXT'
+            text: 'Login'
             pos_hint : {'center_x': .5, 'center_y': .2}
             size_hint_x: .8
             md_bg_color: 1,0,0,1
             on_release: 
-                root.signup_anim(fname, sname,username,dateicon,datelabel ,login, image, label, label1)
-                
-                
-                
-                
+                app.login(fname, sname,username, login, image, label, label1)
+                image.source=app.fourth()
+                label.text='Welcome '+fname.text+" "+sname.text
+                label1.text='Almost there finish setup'

@@ -1,0 +1,38 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/Animated_login/.kivy/logs/kivy_17-01-01_0.txt
+[WARNING] [Config      ] Upgrading configuration in progress.
+[WARNING] [Config      ] Older configuration version detected (0 instead of 21)
+[ERROR  ] Error when copying logo directory
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py", line 343, in <module>
+    shutil.copytree(join(kivy_data_dir, 'logo'), icon_dir)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/shutil.py", line 565, in copytree
+    return _copytree(entries=entries, src=src, dst=dst, symlinks=symlinks,
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/shutil.py", line 521, in _copytree
+    raise Error(errors)
+shutil.Error: [('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-128.png', '/storage/emulated/0/Animated_login/.kivy/icon/kivy-icon-128.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-512.png', '/storage/emulated/0/Animated_login/.kivy/icon/kivy-icon-512.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-16.png', '/storage/emulated/0/Animated_login/.kivy/icon/kivy-icon-16.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-32.png', '/storage/emulated/0/Animated_login/.kivy/icon/kivy-icon-32.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-48.png', '/storage/emulated/0/Animated_login/.kivy/icon/kivy-icon-48.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-64.ico', '/storage/emulated/0/Animated_login/.kivy/icon/kivy-icon-64.ico', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-24.png', '/storage/emulated/0/Animated_login/.kivy/icon/kivy-icon-24.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-256.png', '/storage/emulated/0/Animated_login/.kivy/icon/kivy-icon-256.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-64.png', '/storage/emulated/0/Animated_login/.kivy/icon/kivy-icon-64.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo', '/storage/emulated/0/Animated_login/.kivy/icon', '[Errno 1] Operation not permitted')]
+[INFO   ] Kivy: v2.0.0
+[INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.9.7 (default, Oct  9 2021, 08:02:40) 
+[GCC 11.1.0]
+[INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/bin/python3"
+[INFO   ] Logger: Purge log fired. Analysing...
+[INFO   ] Logger: Purge finished!
+[INFO   ] KivyMD: 1.0.0.dev0, git-Unknown, 2022-02-24 (installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivymd/__init__.py")
+[INFO   ] Factory: 186 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_pil (img_ffpyplayer ignored)
+[INFO   ] Text: Provider: sdl2
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL ES 2" graphics system
+[INFO   ] GL: Backend used <sdl2>
+[INFO   ] GL: OpenGL version <b'OpenGL ES 2.0'>
+[INFO   ] GL: OpenGL vendor <b'ARM'>
+[INFO   ] GL: OpenGL renderer <b'Mali-400 MP'>
+[INFO   ] GL: OpenGL parsed version: 2, 0
+[INFO   ] GL: Texture max size <4096>
+[INFO   ] GL: Texture max units <8>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[INFO   ] GL: NPOT texture support is available
+[WARNING] Deprecated property "<OptionProperty name=color_mode>" of object "<kivymd.uix.textfield.textfield.MDTextField object at 0xa00bb0d0>" was accessed, it will be removed in a future version
+[WARNING] Base: Unknown <android> provider
+[INFO   ] Base: Start application main loop

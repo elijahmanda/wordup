@@ -1,117 +1,92 @@
-#:import colors kivymd.color_definitions.colors
-#:import gch kivy.utils.get_color_from_hex
-#:import environ os.environ
-
-<Check@MDCheckbox>:
-    group: 'group'
-    size_hint: None, None
-    size: dp(48), dp(48)
-
-
-
-
-
-
-
-<VerifyPage>
-
-    canvas:
-        Color:
-            rgba: 1,1,1,1
-        Rectangle:
-            pos: self.pos
-            size: self.size
-
-    MDBoxLayout:
-        id: box_1
-        orientation: "vertical"
-        size_hint: .2, .1
-        pos_hint: {"center_x": .5, "center_y": .7}
-        spacing: "10dp"
-        
-
-        FitImage:
-            source: "assets/logo.jpeg"
+#:import sleep time.sleep
+<VerifyPage>:
+    MDFloatLayout:
+        MDLabel:
+            id : label
+            text: 'SIGN UP'
+            pos_hint : {'center_y': -1}
+            halign : 'center'
+            font_style : 'H4'
+            bold : True
+            font_name: "data/otf/Sofia-Regular.otf"
+        MDLabel:
+            id : label1
+            text: 'Hi!!! Create an account'
+            pos_hint : {'center_y': -1}
+            halign : 'center'
+            font_style : 'H6'
+            bold : True
+            font_name: "data/ttf/Amatic-Bold.ttf"
+        Image:
+            id : image
+            source: 'assets/emoo.jpg'
+            pos_hint : {'center_x': .5, 'center_y': .85}
+            size_hint: 1,1
+        MDTextField:
+            id : email
+            hint_text : 'Enter your email'
+            pos_hint : {'center_x': .5, 'center_y': .68}
+            size_hint_x: .8
+            mode : 'fill'
+            radius : [24,]
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+            on_focus: 
+                image.source=root.first()
+        MDTextField:
+            id : password
+            hint_text : 'Enter your password'
+            pos_hint : {'center_x': .5, 'center_y': .58}
+            size_hint_x: .8
+            mode : 'fill'
+            radius : [24,]
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+            password : True
+            on_focus:
+                image.source=root.second()
+        MDTextField:
+            id : password_confirm
+            hint_text : 'Confirm password'
+            pos_hint : {'center_x': .5, 'center_y': .48}
+            mode : 'fill'
+            radius : [24,]
+            size_hint_x: .8
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+            password : True
+            on_focus: 
+                image.source=root.third()
+        MDSpinner:
+            id : spinner
             size_hint: None, None
-            size : 200, 200
-            pos_hint: {"center_x": .5}
-
+            size: dp(46), dp(46)
+            pos_hint: {'center_x': .5, 'center_y': .35}
+            active: False 
         MDLabel:
-            text: "WORDUP"
-            adaptive_size: True
-            text_size: None, self.font_size
-            theme_text_color: "Primary"
-            font_style: "H6"
-            pos_hint: {'center_x': .5, 'center_y': .5}
-            font_name: "data/ttf/JetBrainsMono-Medium.ttf"
-        MDLabel:
-            text: "Finish and we are good to go!!!."
-            adaptive_size: True
-            text_size: None, self.font_size
-            theme_text_color: "Primary"
-            pos_hint: {'center_x': .5, 'center_y': .5}
-            font_name: "data/ttf/JetBrainsMono-Medium.ttf"
-            font_style : "Button"
-
-    MDBoxLayout:
-        id: box_2
-        adaptive_height: True
-        orientation: "vertical"
-        spacing: "20dp"
-        padding: "10dp"
-        pos_hint: {"center_y": .4}
-        MDGridLayout:
-            pos_hint: {'center_x': .5}
-            cols : 3
+            id : server_response_text
+            text: ""
             size_hint_y: None
-            adaptive_height : True
-            
-            MDLabel:
-                text: "Male"
-                adaptive_size: True
-                text_size: None, self.font_size
-                theme_text_color: "Primary"
-            MDLabel:
-                size_hint_y: None
-                height: self.texture_size[1]
-            MDLabel:
-                text: "Female"
-                adaptive_size: True
-                text_size: None, self.font_size
-                theme_text_color: "Primary"
-
-            Check:
-                id: male_check
-                active: True
-            MDLabel:
-                size_hint_y: None
-                height: self.texture_size[1]
-            Check:
-                id: female_check
-                on_active: 
-                    male_check.on_active= False
-    
-        Widget:
-            size_hint_y: None
-            height: "50dp"
-        MDBoxLayout:
-            id: box_2
-            adaptive_height: True
-            orientation: "vertical"
-            spacing: "10dp"
-            padding: "10dp"
-            pos_hint: {'center_x': .9, "center_y": .3}
-            BoxLayout:
-                spacing: "10dp"
+            height: self.texture_size[1]
+            halign : "center"
+            adaptive_width: True
+            bold : True
+            pos_hint: {'center_x': 0.5,'center_y': 0.23}
+            theme_text_color: "Custom"
+            text_color : 0,0.6,0,1
 
 
-
-                MDFlatButton:
-                    id: button_cancel
-                    text: "CANCEL"
-
-                MDFillRoundFlatButton:
-                    id: button_next
-                    text: "NEXT"
-                    on_release: app.root.current = "home"
         
+        MDRaisedButton:
+            id : signup
+            text: 'SIGN UP'
+            pos_hint : {'center_x': .5, 'center_y': .10}
+            size_hint_x: .8
+            md_bg_color: 1,0,0,1
+            on_release:
+                sleep(1.1)
+                spinner.active=True
+                server_response_text.text="Waiting for server response..."
+                root.verify_anim(email,password,password_confirm, signup, image, label, label1)
+                #root.manager.current="home"
+                
