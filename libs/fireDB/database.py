@@ -1,15 +1,13 @@
+import random
+import json
 import pyrebase
+import sqlite3
 
-from dotenv import load_dotenv   
-load_dotenv()                   
-
-import os 
+import os
 import firebase_admin
 firebaseConfig = os.environ.get('firebaseConfig')
-import json
-import  random
 firebaseConfig = {
-    "apiKey":"AIzaSyAUX3-m-dfl96aJDVQtW9bdiCTjeAN67aE",
+    "apiKey": "AIzaSyAUX3-m-dfl96aJDVQtW9bdiCTjeAN67aE",
     "databaseURL": "https://kivyfiretest-default-rtdb.firebaseio.com/",
     "authDomain": "kivyfiretest.firebaseapp.com",
     "projectId": "kivyfiretest",
@@ -21,15 +19,45 @@ firebaseConfig = {
 firebase = pyrebase.initialize_app(firebaseConfig)
 db = firebase.database()
 storage = firebase.storage()
+try:
+    conn = sqlite3.connect('USER_CRED.db')
+    conn.execute('''CREATE TABLE USER_CREDENTIALS
+        (              
+         FIRSTNAME      TEXT,
+         SECONDNAME     TEXT,
+         USERNAME       TEXT,
+         AGE            INT,
+         BIRTHDATE      INT,
+         BIRTHMONTH     INT,
+         BIRTHYEAR      INT,
+         EMAIL        CHAR(50),
+         PASSWORD           CHAR(20));''')
+except Exception as e:
+    print(e)
 
 
+def collect_fname_sname_username(fname, sname, username):
+    try:
+        script = "INSERT INTO USER_CREDENTIALS (FIRSTNAME, SECONDNAME, USERNAME) VALUES (?, ?, ?);"
+        conn.execute(script, (fname, sname, username))
+        conn.commit()
+        print("Records created successfully")
+    except Exception as e:
+        print(e)
 
 
+def collect_fname_sname_username(fname, sname, username):
+    try:
+        script = "INSERT INTO USER_CREDENTIALS (FIRSTNAME, SECONDNAME, USERNAME) VALUES (?, ?, ?);"
+        conn.execute(script, (fname, sname, username))
+        conn.commit()
+        print("Records created successfully")
+    except Exception as e:
+        print(e)
 
-ALPHABET = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','x','y','z']
 
 def generate_custom_token():
-    idToken = random.randint(100000,999999)
+    idToken = random.randint(100000, 999999)
     idToken = auth.create_custom_token(idToken)
     return str(idToken)
 
@@ -40,14 +68,16 @@ class Database:
         user_end_data = {"wordup": str(text)}
         global_end_data = {"user": "jc", "wordup": str(text)}
         try:
-            db.child("ACCOUNTS").child("USERS").child("hello").child("wordups").push(user_end_data)
+            db.child("ACCOUNTS").child("USERS").child(
+                "hello").child("wordups").push(user_end_data)
         except Exception as e:
             print(e)
 
     def retrieve_data():
         word_text = []
         try:
-            data = db.child("ACCOUNTS").child("USERS").child("user_email").child("wordups").get()
+            data = db.child("ACCOUNTS").child("USERS").child(
+                "user_email").child("wordups").get()
             for wordup in data.each():
                 word_text.append(wordup.val()["word_up"])
         except Exception as e:
@@ -55,39 +85,40 @@ class Database:
         return word_text
 
 
-
-
 auth = firebase.auth()
-    
+
+
 def sign_in_user(email, password):
     try:
-        user=auth.sign_in_with_email_and_password(email, password)
+        user = auth.sign_in_with_email_and_password(email, password)
         return True
 
-    except Exception as e:
-        return  False
-
-def create_user(email, password):                        
-    user=auth.create_user_with_email_and_password(email, password)
-    return user
-
-def send_verification_email(user):
-    auth.send_email_verification(user['idToken'])
-    return True
-    
-def verify_user(self, user):
-    try:
-        user = auth.get_account_info(user["idToken"])[""]
-        if user:
-            return True
     except Exception as e:
         return False
 
 
+def create_user(email, password):
+    try:
+        user = auth.create_user_with_email_and_password(email, password)
+        return user
+    except Exception as e:
+        print(e)
 
-    
-        
+
+def send_verification_email(user):
+    try:
+        auth.send_email_verification(user['idToken'])
+        return True
+    except Exception as e:
+        return False
 
 
-
-
+def verify_user(user):
+    print("............ELIJAH PASSED HERE.........")
+    try:
+        u = auth.get_account_info(user["idToken"])
+        verified = u["users"][0]["emailVerified"]
+        print("Auth info....:", u)
+        return verified
+    except Exception as e:
+        return False
