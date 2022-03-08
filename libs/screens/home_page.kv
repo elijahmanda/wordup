@@ -17,11 +17,11 @@
         
     MDIconButton :
         id : left_btn
-        icon : 'cogs'
+        icon : 'logout'
         theme_icon_color : 'Custom'
         icon_color : gch('#ffffff')
         on_release :
-            app.root.current='settings'
+            root.manager.current="signup_home"
 
 <HomePage>:
     md_bg_color : get_color_from_hex('#ffffff')
@@ -69,14 +69,17 @@
                         height : self.texture_size[1]
                         font_style : 'Caption'
                         pos_hint : {'center_x': .55, 'center_y': .13}
+                    MDIconButton:
+                        icon: "reload"
+                        pos_hint: {'center_x': 0.8,'center_y': 0.13}
+                        on_release: 
+                            carousel.clear_widgets()
+                            root.add_content()
+
                         
                     
-        MDSwiper:
-            padding : '2dp'
-            id : swiper
-            width_mult : 0
-            size_hint_y : None
-            height : root.height - app_bar.height - btm_nav.height-post_card.height-dp(1)
+        Carousel:
+            id : carousel
         BottomNav:
             id : btm_nav
         

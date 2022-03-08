@@ -1,15 +1,13 @@
-from libs.fireDB.database import collect_uid, sign_in_user
+from libs.fireDB.database import collect_password, collect_email
+from libs.fireDB.database import sign_in_user
 from kivymd.uix.screen import MDScreen
 from kivy.clock import Clock
-from time import sleep
-import string
 from kivy.core.window import Window
 from kivy.properties import StringProperty
 from kivymd.toast import toast
 import json
 Window.softinput_mode = "below_target"
 
-from libs.fireDB.database collect_uid
 sidned_in = False
 
 
@@ -31,15 +29,15 @@ class LoginPage(MDScreen):
         else:
             try:
                 signed_in = sign_in_user(email_, password_)
-                user = auth.refresh(sidned_in['refreshToken'])
-                # now we have a fresh token
-                collect_uid(user['idToken'])
+                collect_email(email_)
+                collect_password(password_)
                 if signed_in:
                     self.parent.current = "home"
                     toast("LOGGED IN SUCCESSFUL")
+                else:
+                    toast("WRONG DETAILS")
             except Exception as e:
                 error = json.loads(e.args[1])['error']['message']
-                self.ids["label"].text = str(error)
 
     def first(self):
         self.img = 'assets/emoo.jpg'

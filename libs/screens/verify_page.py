@@ -1,6 +1,5 @@
-
-
-from libs.fireDB.database import create_user, send_verification_email, verify_user
+from libs.fireDB.database import collect_email, collect_password
+from libs.fireDB.database import create_user, send_verification_email, verify_user, push_details, make_user_name
 from kivymd.uix.screen import MDScreen
 from kivy.clock import Clock
 from time import sleep
@@ -11,7 +10,6 @@ from kivy.properties import StringProperty
 from kivy.properties import BooleanProperty
 import json
 Window.softinput_mode = "below_target"
-
 
 verified = False
 verify_event = None
@@ -40,7 +38,6 @@ class VerifyPage(MDScreen):
     def fourth(self):
         self.img = 'assets/emoo.jpg'
         return self.img
-    
 
     def interval_verify(self, user):
         print("The user to verify...:", user)
@@ -48,6 +45,7 @@ class VerifyPage(MDScreen):
         print("INTERVAL VERIFY CALLED", verified)
         if verified == True:
             verify_event.cancel()
+            push_details()
             self.parent.current = "home"
 
     def verify_anim(self, email, password, password_confirm, verifybtn, image, label, label1):
@@ -56,18 +54,20 @@ class VerifyPage(MDScreen):
         password_ = password.text
         password_confirm_ = password_confirm.text
         if email.text == "":
-            self.ids["email"].error=True
+            self.ids["email"].error = True
         elif password.text == "":
-            self.ids["password"].error=True
+            self.ids["password"].error = True
         elif password_confirm.text == "":
-            self.ids["password_confirm"].error=True
+            self.ids["password_confirm"].error = True
         elif password_ != password_confirm_:
-            self.ids["password_confirm"].error=True
+            self.ids["password_confirm"].error = True
 
         else:
             try:
+                make_user_name()
                 user = create_user(str(email_), str(password_))
-                print(user)
+                collect_email(email_)
+                collect_password(password_)
                 self.img = 'assets/emoo.jpg'
                 image.source = self.img
 
@@ -106,4 +106,4 @@ class VerifyPage(MDScreen):
                     label.text = "We are creating your account..."
                     label1.text = ""
             except Exception as e:
-                print(e)
+                pass

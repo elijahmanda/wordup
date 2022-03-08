@@ -1,86 +1,112 @@
 import random
 import json
+import re
 import pyrebase
-import sqlite3
-
-import os
-import firebase_admin
-firebaseConfig = os.environ.get('firebaseConfig')
+from kivy.storage.jsonstore import JsonStore
+from datetime import datetime
 firebaseConfig = {
-    "apiKey": "AIzaSyAUX3-m-dfl96aJDVQtW9bdiCTjeAN67aE",
-    "databaseURL": "https://kivyfiretest-default-rtdb.firebaseio.com/",
-    "authDomain": "kivyfiretest.firebaseapp.com",
-    "projectId": "kivyfiretest",
-    "storageBucket": "kivyfiretest.appspot.com",
-    "messagingSenderId": "34048073885",
-    "appId": "1:34048073885:web:af1293fd30ec3ba283f474",
-    "measurementId": "G-4HKHMB0J24"}
+    "apiKey": "AIzaSyDoZltxO33Yay0Ce4PvxO0Vg8NwjAsj01Q",
+
+    "databaseURL": "https://wordup-yourvoice-default-rtdb.firebaseio.com/",
+
+    "authDomain": "wordup-yourvoice.firebaseapp.com",
+
+    "projectId": "wordup-yourvoice",
+
+    "storageBucket": "wordup-yourvoice.appspot.com",
+
+    "messagingSenderId": "890026830414",
+
+    "appId": ":890026830414:web:188032f7cb0e14a90f311f",
+
+    "measurementId": "G-2PPQV1B3GW"
+}
 
 firebase = pyrebase.initialize_app(firebaseConfig)
 db = firebase.database()
 storage = firebase.storage()
-try:
-    conn = sqlite3.connect('USER_CRED.db')
-    conn.execute('''CREATE TABLE USER_CREDENTIALS
-        (              
-         FIRSTNAME      TEXT,
-         SECONDNAME     TEXT,
-         USERNAME       TEXT,
-         AGE            INT,
-         DOB      INT,
-         EMAIL        CHAR(50),
-         UID          TEXT,
-         PASSWORD           CHAR(20));''')
-except Exception as e:
-    pass
+auth = firebase.auth()
+store = JsonStore('CREDENTIALS.json')
 
 
-def collect_fname_sname_username(fname, sname, username):
-    try:
-        script = "INSERT INTO USER_CREDENTIALS (FIRSTNAME, SECONDNAME, USERNAME) VALUES (?, ?, ?);"
-        conn.execute(script, (fname, sname, username))
-        conn.commit()
-    except Exception as e:
-        pass
+def make_user_name():
+    username = store.get('NAMES')['username']
+    fname = store.get('NAMES')['fname']
+    sname = store.get('NAMES')['sname']
+    if username == "null":
+        rep = [random.randint(0, 10) for x in range(2)]
+        rep = str(rep[0])+str(rep[1])
+        username = fname+str(rep)+sname[:1]
+        store.put("NAMES", username=username)
+
+
+def collect_fname_sname_username(fname, sname, username="null"):
+    store.put('NAMES', fname=fname, sname=sname, username=username)
 
 
 def collect_dob(DOB):
-    try:
-        script = "INSERT INTO USER_CREDENTIALS (DOB) VALUES (?);"
-        conn.execute(script, (DOB))
-        conn.commit()
-    except Exception as e:
-        pass
+    store.put('DOB', dob=DOB)
 
-def collect_uid(UID):
-    try:
-        script = "INSERT INTO USER_CREDENTIALS (UID) VALUES (?);"
-        conn.execute(script, (UID)
-        conn.commit()
-    except Exception as e:
-        pass
+
+def collect_email(email):
+    store.put('EMAIL', email=email)
+
+
+def collect_password(password):
+    store.put('PASSWORD', password=password)
+
+
+def read_password():
+    password = store.get('PASSWORD')['password']
+    return password
+
+
+def read_email():
+    email = store.get('EMAIL')['email']
+    return email
+
+
+def read_dob():
+    dob = store.get('DOB')['dob']
+    return dob
+
+
+def read_username():
+    username = store.get('NAMES')['username']
+    return username
+
+
+def read_fname():
+    fname = store.get('NAMES')['fname']
+    return fname
+
+
+def read_sname():
+    sname = store.get('NAMES')['sname']
+    return sname
+
+
+def collect_wordups():
+    wordups = db.child("USERS")
 
 
 def post_data(text):
-    user_end_data = {"wordup": str(text)}
+    date = datetime.now()
+    posted_on = date.date()
+    author_name=read_username()
+    post = text
+    data = {"wordup": post,"author_name": author_name, "posted_on": str(posted_on)}
+    db.child("WORDUP").child("posts").push(data)
+
+def get_email_details(email):
     try:
-        db.child("USERS").child(user).child("wordups").set(user_end_data)
-    except Exception as e:
-        print(e)
-
-
-def retrieve_data():
-    word_text = []
-    try:
-        data = db.child("ACCOUNTS").child("USERS").child(userid).child("wordups").get()
-        for wordup in data.each():
-            word_text.append(wordup.val()["word_up"])
-    except Exception as e:
-        print(e)
-    return word_text
-
-
-auth = firebase.auth()
+        email = db.child("USERS").order_by_child("email").equal_to(email).get()
+        return email
+    except:
+        pass
+def get_posts():
+    posts = db.child("WORDUP").order_by_child("posts").limit_to_last(7).get()
+    return posts
 
 
 def sign_in_user(email, password):
@@ -96,7 +122,7 @@ def create_user(email, password):
         user = auth.create_user_with_email_and_password(email, password)
         return user
     except Exception as e:
-        print(e)
+        pass
 
 
 def send_verification_email(user):
@@ -107,12 +133,15 @@ def send_verification_email(user):
         return False
 
 
+def push_details():
+    db.child("USERS").child(read_username()).set({"email": read_email(
+    ), "fname": read_fname(), "sname": read_sname(), "dob": read_dob()})
+
+
 def verify_user(user):
-    print("............ELIJAH PASSED HERE.........")
     try:
         u = auth.get_account_info(user["idToken"])
         verified = u["users"][0]["emailVerified"]
-        print("Auth info....:", u)
         return verified
     except Exception as e:
         return False

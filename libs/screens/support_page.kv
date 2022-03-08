@@ -69,7 +69,7 @@
                                 text : 'REPORT'
                                 pos_hint : {'center_x': .8, 'center_y': .2}
                                 on_release:
-                                    post("TRUST CIRCLE")
+                                    root.send_help("Trust Circles")
                                     self.grow()
                 MD3Card :
                     id : zicta_card
@@ -99,7 +99,7 @@
                                 text : 'REPORT'
                                 pos_hint : {'center_x': .8, 'center_y': .2}
                                 on_release :
-                                    post("ZICTA")
+                                    root.send_help("Zicta")
                                     self.grow()
                 MD3Card :
                     id : police_card
@@ -129,7 +129,7 @@
                                 text : 'REPORT'
                                 pos_hint : {'center_x': .8, 'center_y': .2}
                                 on_release :
-                                    post("POLICE")
+                                    root.send_help("Police")
                                     self.grow()
         BottomNav:
             id : btm_nav
