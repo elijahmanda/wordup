@@ -63,6 +63,8 @@
             icon: "assets/dob.png"
             user_font_size: "15sp"
             pos_hint: {'center_x': 0.8,'center_y': 0.34}
+            on_release: root.show_date_picker()
+        
         MDRaisedButton:
             id : back
             text: 'LOGIN'

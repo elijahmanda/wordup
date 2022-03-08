@@ -4,6 +4,7 @@ from kivy.properties import StringProperty
 from kivy.core.window import Window
 Window.softinput_mode = "below_target"
 from kivymd.uix.screen import MDScreen
+from kivymd.uix.pickers import MDDatePicker
 from time import sleep
 import string
 
@@ -15,6 +16,18 @@ class SignUp1(MDScreen):
         self.name='signup_home'
         self.signup=False
     
+
+    def on_save(self, instance, value, date_range):
+        print(instance, value, date_range)
+        self.ids["datelabel"].text=str(value)
+
+    def on_cancel(self, instance, value):
+        '''Events called when the "CANCEL" dialog box button is clicked.'''
+
+    def show_date_picker(self):
+        date_dialog = MDDatePicker()
+        date_dialog.bind(on_save=self.on_save, on_cancel=self.on_cancel)
+        date_dialog.open()
     
     
     def signup_anim(self,fname, sname,username,dateicon,datelabel ,login, image, label, label1):
@@ -27,43 +40,27 @@ class SignUp1(MDScreen):
         label1_  = label1.text
         invalidChars = set(string.punctuation)
         if any(char in invalidChars for char in fname_):
-            print ("fname contains special characters")
-        elif fname_ is None or sname_ is None:
-            print("Enter some values")
+            self.ids["fname"].error= True
+
         elif True in [char.isdigit() for char in fname_]:
-            print("No numbers allowed")
+            self.ids["fname"].error=True
+
+        elif fname_ is None or sname_ is None:
+            self.ids["sname"].error= True
+
         elif any(char in invalidChars for char in sname_):
-            print ("sname contains special characters")
+            self.ids["sname"].error=True
+
         elif True in [char.isdigit() for char in sname_]:
-            print("No numbers allowed")
+            self.ids["sname"].error= True
+
+        elif fname_== "":
+            self.ids["fname"].error= True
+
+        elif sname_== "":
+            self.ids["sname"].error= True
+            
         else:
-            print ("No special characters")
-            self.img='assets/emoo.jpg'
-            image.source= self.img
-            label.text='Welcome '+fname_+" "+sname_
-            label1.text='Almost there finish setup'
-            
-            anim= Animation(opacity=0,duration=0.5)
-            anim.start(fname)
-            anim0= Animation(opacity=0,duration=0.5)
-            anim.start(sname)
-            anim= Animation(opacity=0,duration=0.5)
-            anim.start(datelabel)
-            anim0= Animation(opacity=0,duration=0.5)
-            anim.start(dateicon)
-            anim= Animation(opacity=0,duration=0.5)
-            anim.start(datelabel)
-            anim1= Animation(opacity=0,duration=0.5)
-            anim1.start(login)
-            
-            anim3= Animation(pos_hint={'center_x': .5, 'center_y': .05}, size_hint=(.3,.3),duration=1.5)
-            anim3+=Animation(pos_hint={'center_x': .5, 'center_y': .86}, size_hint=(.4,.4),duration=1.5)
-            anim3.start(image)
-            anim3= Animation(pos_hint={'center_x': .5, 'center_y': .64},duration=3)
-            anim3.start(label)
-            anim4= Animation(pos_hint={'center_x': .5, 'center_y': .55},duration=3)
-            anim4.start(label1)
-            self.signup=False
             self.parent.current="signup_verify"
 
     

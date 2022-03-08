@@ -27,13 +27,12 @@ try:
          SECONDNAME     TEXT,
          USERNAME       TEXT,
          AGE            INT,
-         BIRTHDATE      INT,
-         BIRTHMONTH     INT,
-         BIRTHYEAR      INT,
+         DOB      INT,
          EMAIL        CHAR(50),
+         UID          TEXT,
          PASSWORD           CHAR(20));''')
 except Exception as e:
-    print(e)
+    pass
 
 
 def collect_fname_sname_username(fname, sname, username):
@@ -41,48 +40,44 @@ def collect_fname_sname_username(fname, sname, username):
         script = "INSERT INTO USER_CREDENTIALS (FIRSTNAME, SECONDNAME, USERNAME) VALUES (?, ?, ?);"
         conn.execute(script, (fname, sname, username))
         conn.commit()
-        print("Records created successfully")
     except Exception as e:
-        print(e)
+        pass
 
 
-def collect_fname_sname_username(fname, sname, username):
+def collect_dob(DOB):
     try:
-        script = "INSERT INTO USER_CREDENTIALS (FIRSTNAME, SECONDNAME, USERNAME) VALUES (?, ?, ?);"
-        conn.execute(script, (fname, sname, username))
+        script = "INSERT INTO USER_CREDENTIALS (DOB) VALUES (?);"
+        conn.execute(script, (DOB))
         conn.commit()
-        print("Records created successfully")
+    except Exception as e:
+        pass
+
+def collect_uid(UID):
+    try:
+        script = "INSERT INTO USER_CREDENTIALS (UID) VALUES (?);"
+        conn.execute(script, (UID)
+        conn.commit()
+    except Exception as e:
+        pass
+
+
+def post_data(text):
+    user_end_data = {"wordup": str(text)}
+    try:
+        db.child("USERS").child(user).child("wordups").set(user_end_data)
     except Exception as e:
         print(e)
 
 
-def generate_custom_token():
-    idToken = random.randint(100000, 999999)
-    idToken = auth.create_custom_token(idToken)
-    return str(idToken)
-
-
-class Database:
-
-    def post_data(text):
-        user_end_data = {"wordup": str(text)}
-        global_end_data = {"user": "jc", "wordup": str(text)}
-        try:
-            db.child("ACCOUNTS").child("USERS").child(
-                "hello").child("wordups").push(user_end_data)
-        except Exception as e:
-            print(e)
-
-    def retrieve_data():
-        word_text = []
-        try:
-            data = db.child("ACCOUNTS").child("USERS").child(
-                "user_email").child("wordups").get()
-            for wordup in data.each():
-                word_text.append(wordup.val()["word_up"])
-        except Exception as e:
-            print(e)
-        return word_text
+def retrieve_data():
+    word_text = []
+    try:
+        data = db.child("ACCOUNTS").child("USERS").child(userid).child("wordups").get()
+        for wordup in data.each():
+            word_text.append(wordup.val()["word_up"])
+    except Exception as e:
+        print(e)
+    return word_text
 
 
 auth = firebase.auth()
@@ -92,7 +87,6 @@ def sign_in_user(email, password):
     try:
         user = auth.sign_in_with_email_and_password(email, password)
         return True
-
     except Exception as e:
         return False
 

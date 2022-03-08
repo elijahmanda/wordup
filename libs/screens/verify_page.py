@@ -40,6 +40,7 @@ class VerifyPage(MDScreen):
     def fourth(self):
         self.img = 'assets/emoo.jpg'
         return self.img
+    
 
     def interval_verify(self, user):
         print("The user to verify...:", user)
@@ -55,13 +56,13 @@ class VerifyPage(MDScreen):
         password_ = password.text
         password_confirm_ = password_confirm.text
         if email.text == "":
-            print("Enter an email")
+            self.ids["email"].error=True
         elif password.text == "":
-            print("Enter a password")
+            self.ids["password"].error=True
         elif password_confirm.text == "":
-            print("Confirm password")
+            self.ids["password_confirm"].error=True
         elif password_ != password_confirm_:
-            print("password must much")
+            self.ids["password_confirm"].error=True
 
         else:
             try:
