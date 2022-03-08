@@ -13,10 +13,10 @@ package.domain = org.wordupyourvoice
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,jpg,kv,ogg,png,atlas,png,jpeg,ttf,json,txt
+#source.include_exts = py,jpg,kv,ogg,png,atlas,png,jpeg,ttf,json,txt
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = assets/*,/*.jpg,/*.ogg,/*.png
+#source.include_patterns = assets/*,/*.jpg,/*.ogg,/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec

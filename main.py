@@ -1,5 +1,4 @@
 __version__ = "1.1.1"
-
 from libs.screens.login import LoginPage
 from kivymd.font_definitions import theme_font_styles
 from kivy.core.text import LabelBase
@@ -16,9 +15,9 @@ from kivymd.app import MDApp
 from kivy.utils import platform
 from kivy.uix.image import Image
 
-# if platform == "android":
-#from android.permissions import request_permissions, Permission
-#request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE,Permission.INTERNET])
+if platform == "android":
+    from android.permissions import request_permissions, Permission
+    request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE,Permission.INTERNET])
 
 
 Window.size = [300, 600]
