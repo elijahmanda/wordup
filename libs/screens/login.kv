@@ -1,0 +1,75 @@
+
+<LoginPage>:
+    MDFloatLayout:
+        MDLabel:
+            id : label
+            text: 'LOGIN'
+            pos_hint : {'center_y': -1}
+            halign : 'center'
+            font_style : 'H4'
+            bold : True
+            font_name: "data/otf/Sofia-Regular.otf"
+        MDLabel:
+            id : label1
+            text: 'Log in into your account'
+            pos_hint : {'center_y': -1}
+            halign : 'center'
+            font_style : 'H6'
+            bold : True
+            font_name: "data/ttf/Amatic-Bold.ttf"
+        Image:
+            id : image
+            source: 'assets/emoo.jpg'
+            pos_hint : {'center_x': .5, 'center_y': .84}
+            size_hint: 1,1
+        MDTextField:
+            id : email
+            hint_text : 'Email'
+            pos_hint : {'center_x': .5, 'center_y': .64}
+            size_hint_x: .8
+            mode : 'fill'
+            radius : [24,]
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+            on_focus :
+                image.source=root.first()
+        MDTextField:    
+            id : password
+            hint_text : 'Password'
+            pos_hint : {'center_x': .5, 'center_y': .54}
+            size_hint_x: .8
+            mode : 'fill'
+            radius : [24,]
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+            on_focus :
+                image.source=root.second()
+        MDLabel:
+            id : label
+            height: self.texture_size[1]
+            halign : "center"
+            adaptive_height: True
+            font_size: 20
+            pos_hint: {'center_x': 0.5,'center_y': 0.4}
+       
+        
+        MDRaisedButton:
+            id : signup
+            text: 'SIGNUP'
+            pos_hint : {'center_x': .27, 'center_y': .25}
+            size_hint_x: .39
+            md_bg_color: 1,0,0,1
+            on_release: 
+                root.manager.current="signup_home"
+        MDRaisedButton:
+            id : login
+            text: 'LOGIN'
+            pos_hint : {'center_x': .68, 'center_y': .25}
+            size_hint_x: .39
+            md_bg_color: 0,.7,0,.8
+            on_release: 
+                root.login(email, password, image, label)
+                
+                
+                
+                
