@@ -138,7 +138,7 @@ android.accept_sdk_license = True
 #android.whitelist_src =
 
 # (str) Path to a custom blacklist file
-android.blacklist_src = ./blacklist.txt
+#android.blacklist_src = ./blacklist.txt
 
 # (list) List of Java .jar files to add to the libs so that pyjnius can access
 # their classes. Don't add jars that you do not need, since extra jars can slow
