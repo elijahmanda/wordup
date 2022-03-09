@@ -14,7 +14,7 @@ class SupportPage(MDScreen):
         icon = btm_bar.ids['info_icon']
         icon.icon_color = gch('ff7d1a')
 
-    def send_help(self, dest, fname, sname):
+    def send_help(self, dest):
         toast("Email has been sent to "+dest)
         try:
             if dest == "Zicta":
@@ -26,7 +26,7 @@ class SupportPage(MDScreen):
             elif dest == "humanrights":
                 recipient="registrar-kshrc@karnataka.gov.in."
             subject = "Cyber abuse"
-            text = f"I'm experiencing cyber abuse in need help my name is {fname} {sname}"
+            text = f"I'm experiencing cyber abuse in need help"
             create_chooser = False
             email.send(recipient=recipient, subject=subject, text=text,
                        create_chooser=create_chooser)
