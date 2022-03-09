@@ -50,7 +50,7 @@ class WordUpApp(MDApp):
         Builder.load_file('libs/screens/login.kv')
 
     def on_start(self):
-        return super().on_start()
+        self.sm.current="login"
 
     def on_pause(self):
         return super().on_pause()
