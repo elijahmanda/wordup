@@ -22,7 +22,7 @@ source.dir = .
 #source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-source.exclude_dirs = assets/, data/,libs
+#source.exclude_dirs = assets/, data/,libs/
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
@@ -46,10 +46,10 @@ requirements = python3,kivy==2.0.0,kivymd==0.104.2,pillow==7.0.0,android,sdl2_tt
 #garden_requirements =
 
 # (str) Presplash of the application
-presplash.filename = %(source.dir)s/assets/logo.jpeg
+#presplash.filename = %(source.dir)s/assets/logo.jpeg
 
 # (str) Icon of the application
-icon.filename = %(source.dir)s/assets/logo.jpeg
+#icon.filename = %(source.dir)s/assets/logo.jpeg
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
@@ -82,7 +82,7 @@ fullscreen = 0
 # red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray,
 # darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy,
 # olive, purple, silver, teal.
-android.presplash_color = #FFFFFF
+#android.presplash_color = #FFFFFF
 
 # (list) Permissions
 android.permissions = INTERNET
