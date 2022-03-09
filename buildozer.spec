@@ -36,14 +36,13 @@ version = 1.1.0
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.0.0,https://github.com/kivymd/KivyMD/archive/master.zip,pillow==7.0.0,android,sdl2_ttf==2.0.15,pygments,plyer==2.0.0,requests,pyrebase
+requirements =python3,kivy==2.0.0rc4, kivymd,sdl2_ttf==2.0.15,pillow,android,plyer==2.0.0,requests,pyrebase
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
-# requirements.source.kivy = ../../kivy
-
+# requirements.source.kivy
 # (list) Garden requirements
-#garden_requirements =
+#garden_requirements 
 
 # (str) Presplash of the application
 presplash.filename = %(source.dir)s/assets/logo.jpeg
@@ -213,7 +212,7 @@ android.accept_sdk_license = True
 #android.uses_library =
 
 # (str) Android logcat filters to use
-#android.logcat_filters = *:S python:D
+android.logcat_filters = *:S python:D
 
 # (bool) Copy library instead of making a libpymodules.so
 #android.copy_libs = 1
