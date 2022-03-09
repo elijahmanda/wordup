@@ -60,7 +60,7 @@ class WordUpApp(MDApp):
 
     def my_key_handler(self, window, keycode1, keycode2, text, modifiers):
         if keycode1 in [27, 1001]:
-            if self.sm.current_screen.name not in ["support"]:
+            if self.sm.current_screen.name not in ["login","signup_verify","signup_home","home"]:
                 self.sm.current="home"
                 return True
         else:
