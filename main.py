@@ -49,8 +49,7 @@ class WordUpApp(MDApp):
         # Builder.load_file('libs/screens/verify_page.kv')
         # Builder.load_file('libs/screens/login.kv')
 
-    def on_start(self):
-        self.sm.current="support"
+    
 
     def on_pause(self):
         return super().on_pause()
