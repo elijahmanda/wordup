@@ -13,7 +13,7 @@ package.domain = org.wordup
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-#source.include_exts = py,png,jpg,kv,atlas,jpeg,json,ttf,otf
+source.include_exts = py,png,jpg,kv,atlas,jpeg,json,ttf,otf
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -28,7 +28,7 @@ source.dir = .
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 1.0.0
+version = 1.1.0
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -36,7 +36,7 @@ version = 1.0.0
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.0.0,kivymd==0.104.2,pillow==7.0.0,android,sdl2_ttf==2.0.15,pygments,plyer==2.0.0,pyrebase4==4.5.0,pyjnius
+requirements = python3,kivy==2.0.0,https://github.com/kivymd/KivyMD/archive/master.zip,pillow==7.0.0,android,sdl2_ttf==2.0.15,pygments,plyer==2.0.0,pyrebase4==4.5.0,pyjnius
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -46,10 +46,10 @@ requirements = python3,kivy==2.0.0,kivymd==0.104.2,pillow==7.0.0,android,sdl2_tt
 #garden_requirements =
 
 # (str) Presplash of the application
-#presplash.filename = %(source.dir)s/assets/logo.jpeg
+presplash.filename = %(source.dir)s/assets/logo.jpeg
 
 # (str) Icon of the application
-#icon.filename = %(source.dir)s/assets/logo.jpeg
+icon.filename = %(source.dir)s/assets/logo.jpeg
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
@@ -82,7 +82,7 @@ fullscreen = 0
 # red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray,
 # darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy,
 # olive, purple, silver, teal.
-#android.presplash_color = #FFFFFF
+android.presplash_color = teal
 
 # (list) Permissions
 android.permissions = INTERNET
@@ -123,7 +123,7 @@ android.permissions = INTERNET
 # agreements. This is intended for automation only. If set to False,
 # the default, you will be shown the license when first running
 # buildozer.
-# android.accept_sdk_license = False
+android.accept_sdk_license = True
 
 # (str) Android entry point, default is ok for Kivy-based app
 #android.entrypoint = org.renpy.android.PythonActivity
