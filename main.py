@@ -20,9 +20,6 @@ if platform == "android":
     request_permissions([Permission.INTERNET])
 
 
-Window.size = [300, 600]
-
-
 class WordUpApp(MDApp):
     def build(self):
         self.icon = "assets/logo.jpeg"
@@ -40,7 +37,6 @@ class WordUpApp(MDApp):
         self.sm.add_widget(SupportPage())
         self.sm.add_widget(TrustCirclesPage())
         self.sm.add_widget(SettingsPage())
-        self.bind(on_start=self.post_build_init)
 
         return self.sm
 
@@ -62,16 +58,6 @@ class WordUpApp(MDApp):
 
     def on_resume(self):
         return super().on_resume()
-
-    def on_stop(self):
-        return super().on_stop()
-
-    def post_build_init(self, *args):
-        if platform == 'android':
-            import android
-            android.map_key(android.KEYCODE_BACK, 1001)
-        win = Window
-        win.bind(on_keyboard=self.my_key_handler)
 
     def my_key_handler(self, window, keycode1, keycode2, text, modifiers):
         if keycode1 in [27, 1001]:
