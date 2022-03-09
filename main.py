@@ -1,7 +1,5 @@
 
 from libs.screens.login import LoginPage
-from kivymd.font_definitions import theme_font_styles
-from kivy.core.text import LabelBase
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, SwapTransition
 from libs.screens.verify_page import VerifyPage
@@ -15,9 +13,10 @@ from kivymd.app import MDApp
 from kivy.utils import platform
 from kivy.uix.image import Image
 
-if platform == "android":
-    from android.permissions import request_permissions, Permission
-    request_permissions([Permission.INTERNET])
+# if platform == "android":
+#     from android.permissions import request_permissions, Permission
+#     request_permissions([Permission.INTERNET])
+
 
 
 class WordUpApp(MDApp):
@@ -64,7 +63,8 @@ class WordUpApp(MDApp):
             if self.sm.current_screen.name not in ["home", "login", "signup_home", "signup_verify"]:
                 self.sm.current="home"
                 return True
-        return False
+        else:
+            return False
 
 
 if __name__ == '__main__':
