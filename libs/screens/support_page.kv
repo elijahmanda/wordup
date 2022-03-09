@@ -44,10 +44,11 @@
                 MD3Card :
                     id : trust_card
                     size_hint_y : None
-                    height : '150dp'
+                    height : '250dp'
                     elevation : 12
                     radius : [14, ]
                     MDBoxLayout :
+                        id: trust_box
                         size_hint : None,None
                         size : trust_card.size
                         padding : '5dp'
@@ -58,26 +59,32 @@
                                 halign : 'center'
                                 size_hint_y: None
                                 height : self.texture_size[1]
-                                pos_hint : {'center_x': .2, 'center_y': .8}
+                                pos_hint : {'center_x': .2, 'center_y': .95}
+                            MDLabel:
+                                text:"A true friend cares about you and is able to have concern and respect for your thoughts and emotions even when they may not agree. If the disappointment you are experiencing in a friendship has become consistent, it may be time to redefine your definition of a true friend."
+                                pos_hint : {'center_x': .5, 'center_y': .5}
+                                text_size : trust_card.width-dp(15),None
+                                size : self.texture_size
                             FitImage:
                                 source : 'assets/people_emo.jpg'
                                 size_hint : None, None
                                 size : 60, 60
                                 radius : [60, ]
-                                pos_hint : {'center_x': .5, 'center_y': .2}
+                                pos_hint : {'center_x': .5, 'center_y': .11}
                             MagicButton:
                                 text : 'REPORT'
-                                pos_hint : {'center_x': .8, 'center_y': .2}
+                                pos_hint : {'center_x': .8, 'center_y': .11}
                                 on_release:
-                                    root.send_help("Trust Circles")
+                                    app.root.current='trust'
                                     self.grow()
                 MD3Card :
                     id : zicta_card
                     size_hint_y : None
-                    height : '150dp'
+                    height : '250dp'
                     elevation : 12
                     radius : [14, ]
                     MDBoxLayout :
+                        id : zicta_box
                         size_hint : None,None
                         size : zicta_card.size
                         padding : '5dp'
@@ -88,26 +95,32 @@
                                 halign : 'center'
                                 size_hint_y: None
                                 height : self.texture_size[1]
-                                pos_hint : {'center_x': .2, 'center_y': .8}
+                                pos_hint : {'center_x': .2, 'center_y': .95}
+                            MDLabel:
+                                text:"The Zambia Information and Communication Technology Authority (ZICTA) through its legal mandate aims to protect fully the interests of the consumers. In protecting the rights and interests of consumers, ZICTA undertakes consumer protection from exploitation, and other anti-competitive behaviors."
+                                pos_hint : {'center_x': .5, 'center_y': .5}
+                                text_size : zicta_card.width-dp(15),None
+                                size : self.texture_size
                             FitImage:
                                 source : 'assets/zicta.jpg'
                                 size_hint : None, None
                                 size : 60, 60
                                 radius : [60, ]
-                                pos_hint : {'center_x': .5, 'center_y': .2}
+                                pos_hint : {'center_x': .5, 'center_y': .11}
                             MagicButton:
                                 text : 'REPORT'
-                                pos_hint : {'center_x': .8, 'center_y': .2}
+                                pos_hint : {'center_x': .8, 'center_y': .11}
                                 on_release :
                                     root.send_help("Zicta")
                                     self.grow()
                 MD3Card :
                     id : police_card
                     size_hint_y : None
-                    height : '150dp'
+                    height : '250dp'
                     elevation : 12
                     radius : [14, ]
                     MDBoxLayout :
+                        id : police_box
                         size_hint : None,None
                         size : police_card.size
                         padding : '5dp'
@@ -118,18 +131,59 @@
                                 halign : 'center'
                                 size_hint_y: None
                                 height : self.texture_size[1]
-                                pos_hint : {'center_x': .2, 'center_y': .8}
+                                pos_hint : {'center_x': .2, 'center_y': .95}
+                            MDLabel:
+                                text:"Its main function amongst others is to provide logistical and physical (manpower) support to Provincial Police Commissioners in Divisions. It is also responsible for general welfare of officers sent on operation duties and oversees all issues of security unrest in the country."
+                                pos_hint : {'center_x': .5, 'center_y': .5}
+                                text_size : police_card.width-dp(15),None
+                                size : self.texture_size
                             FitImage:
                                 source : 'assets/police_emo.jpg'
                                 size_hint : None, None
                                 size : 60, 60
                                 radius : [70, ]
-                                pos_hint : {'center_x': .5, 'center_y': .2}
+                                pos_hint : {'center_x': .5, 'center_y': .11}
                             MagicButton:
                                 text : 'REPORT'
-                                pos_hint : {'center_x': .8, 'center_y': .2}
+                                pos_hint : {'center_x': .8, 'center_y': .11}
                                 on_release :
                                     root.send_help("Police")
+                                    self.grow()
+                MD3Card :
+                    id : humanrights_card
+                    size_hint_y : None
+                    height : '250dp'
+                    elevation : 12
+                    radius : [14, ]
+                    MDBoxLayout :
+                        id : humanrights_box
+                        size_hint : None,None
+                        size : humanrights_card.size
+                        padding : '5dp'
+                        spacing : '5dp'
+                        FloatLayout :
+                            MDLabel :
+                                text : 'Human Rights Commission'
+                                halign : 'center'
+                                size_hint_y: None
+                                height : self.texture_size[1]
+                                pos_hint : {'center_x': .2, 'center_y': .95}
+                            MDLabel:
+                                text:"The mandate of the Human Rights Commission is to promote and protect human rights for all people in Zambia. The functions of the Commission are basically investigative, educative and advisory. The Human Rights Commission is an independent constitutional body established under Article 125 of the Constitution of Zambia."
+                                pos_hint : {'center_x': .5, 'center_y': .5}
+                                text_size : humanrights_card.width-dp(15),None
+                                size : self.texture_size
+                            FitImage:
+                                source : 'assets/humanrights.jpeg'
+                                size_hint : None, None
+                                size : 60, 60
+                                radius : [70, ]
+                                pos_hint : {'center_x': .5, 'center_y': .11}
+                            MagicButton:
+                                text : 'REPORT'
+                                pos_hint : {'center_x': .8, 'center_y': .11}
+                                on_release :
+                                    root.send_help("humanrights")
                                     self.grow()
         BottomNav:
             id : btm_nav

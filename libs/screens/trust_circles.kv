@@ -36,19 +36,36 @@
         AppBarTru:
             id : app_bar
         MDBoxLayout:
-            adaptive_height: True
+            orientation: 'vertical'
+            spacing : "10dp"
             MDTextField:
-                id : field
+                id : email
                 mode : "fill"
                 hint_text : "Enter their email address..."
                 pos_hint: {'center_x': 0.5}
                 color_mode : 'custom'
                 line_color_focus : get_color_from_hex('#000000')
                 fill_color : gch('#000000')
-            MDRaisedButton:
-                text: "Add your trusty..."
+            MDTextField:
+                id : subject
+                mode : "fill"
+                hint_text : "Describe your problem..."
                 pos_hint: {'center_x': 0.5}
-                on_release: root.add_friend(field.text)
+                color_mode : 'custom'
+                line_color_focus : get_color_from_hex('#000000')
+                fill_color : gch('#000000')
+            MDTextField:
+                id : help_text
+                mode : "fill"
+                hint_text : "Enter a challenge you are facing..."
+                pos_hint: {'center_x': 0.5}
+                color_mode : 'custom'
+                line_color_focus : get_color_from_hex('#000000')
+                fill_color : gch('#000000')
+            MDRaisedButton:
+                text: "Get help from your trusty..."
+                pos_hint: {'center_x': 0.5}
+                on_release: root.add_friend(email.text,subject.text, help_text.text)
         ScrollView:
             MDList:
                 id : list

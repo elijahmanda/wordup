@@ -4,19 +4,19 @@
 title = WordUp
 
 # (str) Package name
-package.name = wordupvoice
+package.name = word_up
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.wordupyourvoice
+package.domain = org.wordup
 
 # (str) Source code where the main.py live
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-#source.include_exts = py,jpg,kv,ogg,png,atlas,png,jpeg,ttf,json,txt
+source.include_exts = py,png,jpg,kv,atlas,jpeg,json,ttf,otf
 
 # (list) List of inclusions using pattern matching
-#source.include_patterns = assets/*,/*.jpg,/*.ogg,/*.png
+#source.include_patterns = assets/*,images/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -31,12 +31,12 @@ source.dir = .
 version = 1.0.0
 
 # (str) Application versioning (method 2)
-#version.regex = __version__ = ['"](.*)['"]
-#version.filename = %(source.dir)s/main.py
+# version.regex = __version__ = ['"](.*)['"]
+# version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.0.0,https://github.com/kivymd/KivyMD/archive/master.zip,pillow==7.0.0,ffpyplayer,ffpyplayer_codecs,pyrebase4,android,sdl2_ttf==2.0.15,pygments,plyer
+requirements = python3,kivy==2.0.0,https://github.com/kivymd/KivyMD/archive/master.zip,pillow==7.0.0,android,sdl2_ttf==2.0.15,pygments==2.3.1,plyer==2.0.0,pyrebase4==4.5.0,pyjnius
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -88,16 +88,16 @@ android.presplash_color = #FFFFFF
 android.permissions = INTERNET
 
 # (int) Target Android API, should be as high as possible.
-android.api = 27
+#android.api = 27
 
 # (int) Minimum API your APK will support.
-android.minapi = 21
+#android.minapi = 21
 
 # (int) Android SDK version to use
 #android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 19b
+#android.ndk = 19b
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
@@ -117,13 +117,13 @@ android.ndk = 19b
 # (bool) If True, then skip trying to update the Android sdk
 # This can be useful to avoid excess Internet downloads or save time
 # when an update is due and you just want to test/build your package
-android.skip_update = False
+# android.skip_update = False
 
 # (bool) If True, then automatically accept SDK license
 # agreements. This is intended for automation only. If set to False,
 # the default, you will be shown the license when first running
 # buildozer.
-android.accept_sdk_license = True
+# android.accept_sdk_license = False
 
 # (str) Android entry point, default is ok for Kivy-based app
 #android.entrypoint = org.renpy.android.PythonActivity
@@ -138,7 +138,7 @@ android.accept_sdk_license = True
 #android.whitelist_src =
 
 # (str) Path to a custom blacklist file
-#android.blacklist_src = ./blacklist.txt
+#android.blacklist_src =
 
 # (list) List of Java .jar files to add to the libs so that pyjnius can access
 # their classes. Don't add jars that you do not need, since extra jars can slow

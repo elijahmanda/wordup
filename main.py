@@ -1,4 +1,4 @@
-__version__ = "1.1.1"
+
 from libs.screens.login import LoginPage
 from kivymd.font_definitions import theme_font_styles
 from kivy.core.text import LabelBase
@@ -17,7 +17,7 @@ from kivy.uix.image import Image
 
 if platform == "android":
     from android.permissions import request_permissions, Permission
-    request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE,Permission.INTERNET])
+    request_permissions([Permission.INTERNET])
 
 
 Window.size = [300, 600]
@@ -25,8 +25,9 @@ Window.size = [300, 600]
 
 class WordUpApp(MDApp):
     def build(self):
-        self.icon="assets/logo.jpeg"
-        self.splash_screen_image = Image(source='assets/logo.jpeg', size=(0, 0))
+        self.icon = "assets/logo.jpeg"
+        self.splash_screen_image = Image(
+            source='assets/logo.jpeg', size=(0, 0))
         self.theme_cls.theme_style = 'Light'
         self.theme_cls.primary_palette = "DeepPurple"
         self.theme_cls.primary_hue = "500"
@@ -74,8 +75,9 @@ class WordUpApp(MDApp):
 
     def my_key_handler(self, window, keycode1, keycode2, text, modifiers):
         if keycode1 in [27, 1001]:
-            self.sm.current="home"
-            return True
+            if self.sm.current_screen.name not in ["home", "login", "signup_home", "signup_verify"]:
+                self.sm.current="home"
+                return True
         return False
 
 

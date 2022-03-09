@@ -12,7 +12,7 @@ Builder.load_string('''
     MDCard:
         id : main_card
         size_hint_y: None
-        height : int(root.height*.55)
+        height : int(root.height*.65)
         orientation : 'vertical'
         radius : 14
         elevation : 8
@@ -25,7 +25,7 @@ Builder.load_string('''
                 size_hint: None, None
                 size : caption_box.size
                 MDLabel:
-                    text: 'PositiveVibes@WordUp'
+                    text: 'PositiveVibes@WordUpInspiration'
                     pos_hint : {'center_x': .8, 'center_y': .5}
                     font_style : 'Caption'
                     adaptive_height : True                    

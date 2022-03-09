@@ -1,3 +1,4 @@
+from asyncio import events
 from libs.fireDB.database import collect_email, collect_password
 from libs.fireDB.database import create_user, send_verification_email, verify_user, push_details, make_user_name
 from kivymd.uix.screen import MDScreen
@@ -107,3 +108,7 @@ class VerifyPage(MDScreen):
                     label1.text = ""
             except Exception as e:
                 pass
+
+    def cancel_event(self):
+        verify_event.cancel()
+

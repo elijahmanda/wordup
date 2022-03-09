@@ -82,6 +82,7 @@
             size_hint_x: .39
             md_bg_color: 1,0,0,1
             on_release:
+                root.cancel_event()
                 root.manager.current="signup_home"
         MDRaisedButton:
             id : signup

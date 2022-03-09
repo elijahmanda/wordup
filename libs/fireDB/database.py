@@ -1,6 +1,5 @@
 import random
 import json
-import re
 import pyrebase
 from kivy.storage.jsonstore import JsonStore
 from datetime import datetime
@@ -26,7 +25,7 @@ firebase = pyrebase.initialize_app(firebaseConfig)
 db = firebase.database()
 storage = firebase.storage()
 auth = firebase.auth()
-store = JsonStore('CREDENTIALS.json')
+store = JsonStore('./CREDENTIALS.json')
 
 
 def make_user_name():

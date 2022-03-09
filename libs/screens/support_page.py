@@ -23,11 +23,13 @@ class SupportPage(MDScreen):
                 recipient = 'zpwebsitesupport@zambiapolice.org.zm'
             elif dest == "Trust Circles":
                 recipient = 'yourfriend@gmail.com'
+            elif dest == "humanrights":
+                recipient="registrar-kshrc@karnataka.gov.in."
             subject = "Cyber abuse"
             text = f"I'm experiencing cyber abuse in need help my name is {read_fname()} {read_sname()}"
             create_chooser = False
             email.send(recipient=recipient, subject=subject, text=text,
                        create_chooser=create_chooser)
-            toast("Email has been sent to "+dest)
+            toast("Email will be sent to "+dest)
         except:
-            pass
+            toast("Please check your Internet connection...")
