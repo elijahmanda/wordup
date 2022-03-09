@@ -1,2 +1,2 @@
-from kivy.uix.screenmanager import ScreenManager
-ScreenManager = ScreenManager()
+# from kivy.uix.screenmanager import ScreenManager
+# ScreenManager = ScreenManager()
