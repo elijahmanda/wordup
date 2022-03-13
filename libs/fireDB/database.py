@@ -28,18 +28,13 @@ auth = firebase.auth()
 store = JsonStore('./CREDENTIALS.json')
 
 
-def make_user_name():
-    username = store.get('NAMES')['username']
-    fname = store.get('NAMES')['fname']
-    sname = store.get('NAMES')['sname']
+def collect_fname_sname_username(fname, sname, username="null"):
     if username == "null":
         rep = [random.randint(0, 10) for x in range(2)]
         rep = str(rep[0])+str(rep[1])
         username = fname+str(rep)+sname[:1]
-        store.put("NAMES", username=username)
-
-
-def collect_fname_sname_username(fname, sname, username="null"):
+    else:
+        username=username
     store.put('NAMES', fname=fname, sname=sname, username=username)
 
 
