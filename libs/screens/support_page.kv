@@ -1,0 +1,135 @@
+#:import BaseBox libs.components.base_box.BaseBox
+#:import BottomNav libs.components.bottom_nav.BottomNav
+#:import MD3Card libs.components.card_custom
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+<MagicButton@MagicBehavior+MDFillRoundFlatButton>
+
+<AppBarSup@MDBoxLayout>
+    md_bg_color : gch('#b300b1')
+    padding : '5dp'
+    adaptive_height : True
+    
+    MDIconButton :
+        id : left_btn
+        icon : 'arrow-left'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+        on_release :
+            app.root.current='home'
+    MDLabel :
+        text : 'Support'
+        theme_text_color : 'Custom'
+        text_color : gch('#ffffff')
+        halign : 'center'
+        valign : 'center'
+        font_size : 30
+        
+    MDIconButton :
+        id : right_btn
+        icon : 'information-outline'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+
+<SupportPage>:
+    md_bg_color : get_color_from_hex('#ffffff')
+    
+    BaseBox:
+        orientation : 'vertical'
+        spacing : "1dp"
+        AppBarSup :
+        ScrollView :
+            MDList :
+                padding_y : '12dp'
+                spacing : '12dp'
+                MD3Card :
+                    id : trust_card
+                    size_hint_y : None
+                    height : '150dp'
+                    elevation : 12
+                    radius : [14, ]
+                    MDBoxLayout :
+                        size_hint : None,None
+                        size : trust_card.size
+                        padding : '5dp'
+                        spacing : '5dp'
+                        FloatLayout :
+                            MDLabel :
+                                text : 'Trust Circles'
+                                halign : 'center'
+                                size_hint_y: None
+                                height : self.texture_size[1]
+                                pos_hint : {'center_x': .2, 'center_y': .8}
+                            FitImage:
+                                source : 'assets/people_emo.jpg'
+                                size_hint : None, None
+                                size : 60, 60
+                                radius : [60, ]
+                                pos_hint : {'center_x': .5, 'center_y': .2}
+                            MagicButton:
+                                text : 'REPORT'
+                                pos_hint : {'center_x': .8, 'center_y': .2}
+                                on_release:
+                                    root.send_help("Trust Circles")
+                                    self.grow()
+                MD3Card :
+                    id : zicta_card
+                    size_hint_y : None
+                    height : '150dp'
+                    elevation : 12
+                    radius : [14, ]
+                    MDBoxLayout :
+                        size_hint : None,None
+                        size : zicta_card.size
+                        padding : '5dp'
+                        spacing : '5dp'
+                        FloatLayout :
+                            MDLabel :
+                                text : 'Zicta'
+                                halign : 'center'
+                                size_hint_y: None
+                                height : self.texture_size[1]
+                                pos_hint : {'center_x': .2, 'center_y': .8}
+                            FitImage:
+                                source : 'assets/zicta.jpg'
+                                size_hint : None, None
+                                size : 60, 60
+                                radius : [60, ]
+                                pos_hint : {'center_x': .5, 'center_y': .2}
+                            MagicButton:
+                                text : 'REPORT'
+                                pos_hint : {'center_x': .8, 'center_y': .2}
+                                on_release :
+                                    root.send_help("Zicta")
+                                    self.grow()
+                MD3Card :
+                    id : police_card
+                    size_hint_y : None
+                    height : '150dp'
+                    elevation : 12
+                    radius : [14, ]
+                    MDBoxLayout :
+                        size_hint : None,None
+                        size : police_card.size
+                        padding : '5dp'
+                        spacing : '5dp'
+                        FloatLayout :
+                            MDLabel :
+                                text : 'Police'
+                                halign : 'center'
+                                size_hint_y: None
+                                height : self.texture_size[1]
+                                pos_hint : {'center_x': .2, 'center_y': .8}
+                            FitImage:
+                                source : 'assets/police_emo.jpg'
+                                size_hint : None, None
+                                size : 60, 60
+                                radius : [70, ]
+                                pos_hint : {'center_x': .5, 'center_y': .2}
+                            MagicButton:
+                                text : 'REPORT'
+                                pos_hint : {'center_x': .8, 'center_y': .2}
+                                on_release :
+                                    root.send_help("Police")
+                                    self.grow()
+        BottomNav:
+            id : btm_nav

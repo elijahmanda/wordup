@@ -1,0 +1,88 @@
+
+<SignUp1>:
+    MDFloatLayout:
+        MDLabel:
+            id : label
+            text: 'SIGN UP'
+            pos_hint : {'center_y': -1}
+            halign : 'center'
+            font_style : 'H4'
+            bold : True
+            font_name: "data/otf/Sofia-Regular.otf"
+        MDLabel:
+            id : label1
+            text: 'Hi!!! Create an account'
+            pos_hint : {'center_y': -1}
+            halign : 'center'
+            font_style : 'H6'
+            bold : True
+            font_name: "data/ttf/Amatic-Bold.ttf"
+        Image:
+            id : image
+            source: 'assets/emoo.jpg'
+            pos_hint : {'center_x': .5, 'center_y': .84}
+            size_hint: 1,1
+        MDTextField:
+            id : fname
+            hint_text : 'First name'
+            pos_hint : {'center_x': .5, 'center_y': .64}
+            size_hint_x: .8
+            mode : 'fill'
+            radius : [24,]
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+        MDTextField:    
+            id : sname
+            hint_text : 'Second name'
+            pos_hint : {'center_x': .5, 'center_y': .54}
+            size_hint_x: .8
+            mode : 'fill'
+            radius : [24,]
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+        MDTextField:
+            id : username
+            hint_text : 'Preferred username'
+            helper_text : 'Optional. Will be made for you if left blank'
+            pos_hint : {'center_x': .5, 'center_y': .44}
+            mode : 'fill'
+            radius : [24,]
+            size_hint_x: .8
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+        MDLabel:
+            id : datelabel
+            text: "Choose your date of birth"
+            size_hint_y: None
+            height: self.texture_size[1]
+            halign : "center"
+            adaptive_width: True
+            pos_hint: {'center_x': 0.4,'center_y': 0.34}
+        MDIconButton:
+            id : dateicon
+            icon: "assets/dob.png"
+            user_font_size: "15sp"
+            pos_hint: {'center_x': 0.8,'center_y': 0.34}
+            on_release: root.show_date_picker()
+        
+        MDRaisedButton:
+            id : back
+            text: 'LOGIN'
+            pos_hint : {'center_x': .27, 'center_y': .2}
+            size_hint_x: .39
+            md_bg_color: 1,0,0,1
+            on_release:
+                root.manager.current="login"
+       
+        MDRaisedButton:
+            id : login
+            text: ' NEXT'
+            pos_hint : {'center_x': .68, 'center_y': .2}
+            size_hint_x: .39
+            md_bg_color: 1,0,0,1
+            on_release: 
+                root.signup_anim(fname, sname,username,dateicon,datelabel ,login, image, label, label1)
+                
+                
+                
+                

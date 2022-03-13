@@ -1,0 +1,41 @@
+#:import gch kivy.utils.get_color_from_hex
+<BottomNav>:
+    md_bg_color : gch('#b300b1') 
+    spacing : '20dp'         
+    adaptive_height : True
+    MDLabel :
+        halign : 'center'
+        valign : 'center'
+        font_size : 25
+    MDIconButton :
+        id : home_icon
+        icon : 'home'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+        on_release:
+            app.root.current='home'
+    MDIconButton :
+        id : human_icon
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+        icon : 'human-greeting-proximity'
+        on_release :
+            app.root.current='trust'
+              
+    MDIconButton :
+        id : info_icon
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+        icon : 'information-variant'
+        on_release :
+            app.root.current='support'
+
+        
+    
+        
+    MDLabel :
+        id : bottom_bar_label2
+        halign : 'center'
+        valign : 'center'
+        font_size : 25
+  

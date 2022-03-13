@@ -1,0 +1,94 @@
+#:import sleep time.sleep
+<VerifyPage>:
+    MDFloatLayout:
+        MDLabel:
+            id : label
+            text: 'Almost there!'
+            pos_hint : {'center_y': -1}
+            halign : 'center'
+            font_style : 'H4'
+            bold : True
+            font_name: "data/otf/Sofia-Regular.otf"
+        MDLabel:
+            id : label1
+            text: 'Hi!!! Finish making account'
+            pos_hint : {'center_y': -1}
+            halign : 'center'
+            font_style : 'H6'
+            bold : True
+            font_name: "data/ttf/Amatic-Bold.ttf"
+        Image:
+            id : image
+            source: 'assets/emoo.jpg'
+            pos_hint : {'center_x': .5, 'center_y': .85}
+            size_hint: 1,1
+        MDTextField:
+            id : email
+            hint_text : 'Enter your email'
+            pos_hint : {'center_x': .5, 'center_y': .68}
+            size_hint_x: .8
+            mode : 'fill'
+            radius : [24,]
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+            on_focus: 
+                image.source=root.first()
+        MDTextField:
+            id : password
+            hint_text : 'Enter your password'
+            pos_hint : {'center_x': .5, 'center_y': .58}
+            size_hint_x: .8
+            mode : 'fill'
+            radius : [24,]
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+            password : True
+            on_focus:
+                image.source=root.second()
+        MDTextField:
+            id : password_confirm
+            hint_text : 'Confirm password'
+            pos_hint : {'center_x': .5, 'center_y': .48}
+            mode : 'fill'
+            radius : [24,]
+            size_hint_x: .8
+            color_mode: 'custom'
+            line_color_focus: 1,0,0,1
+            password : True
+            on_focus: 
+                image.source=root.third()
+        MDSpinner:
+            id : spinner
+            size_hint: None, None
+            size: dp(46), dp(46)
+            pos_hint: {'center_x': .5, 'center_y': .35}
+            active: False 
+        MDLabel:
+            id : server_response_text
+            size_hint_y: None
+            height: self.texture_size[1]
+            halign : "center"
+            adaptive_width: True
+            bold : True
+            pos_hint: {'center_x': 0.5,'center_y': 0.23}
+            theme_text_color: "Custom"
+            text_color : 0,0.6,0,1
+
+
+        MDRaisedButton:
+            id : login
+            text: 'BACK'
+            pos_hint : {'center_x': .27, 'center_y': .10}
+            size_hint_x: .39
+            md_bg_color: 1,0,0,1
+            on_release:
+                root.manager.current="signup_home"
+        MDRaisedButton:
+            id : signup
+            text: 'SIGN UP'
+            pos_hint : {'center_x': .70, 'center_y': .10}
+            size_hint_x: .39
+            md_bg_color: 0,.7,0,.8
+            on_release:
+                root.verify_anim(email,password,password_confirm, signup, image, label, label1)
+                

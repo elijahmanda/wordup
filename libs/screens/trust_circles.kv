@@ -1,0 +1,58 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import BottomNav libs.components.bottom_nav.BottomNav
+#:import BaseBox libs.components.base_box.BaseBox
+
+<AppBarTru@MDBoxLayout>
+    md_bg_color : gch('#b300b1')
+    padding : '5dp'
+    adaptive_height : True
+    
+    MDIconButton :
+        id : left_btn
+        icon : 'arrow-left'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+        on_release :
+            app.root.current='home'
+    MDLabel :
+        text : 'Trust Circles'
+        theme_text_color : 'Custom'
+        text_color : gch('#ffffff')
+        halign : 'center'
+        valign : 'center'
+        font_size : 30
+        
+    MDIconButton :
+        id : right_btn
+        icon : 'information-outline'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+
+<TrustCirclesPage>:
+    md_bg_color : get_color_from_hex('#ffffff')
+    
+    BaseBox :
+        orientation : 'vertical'
+        AppBarTru:
+            id : app_bar
+        MDBoxLayout:
+            adaptive_height: True
+            MDTextField:
+                id : field
+                mode : "fill"
+                hint_text : "Enter their email address..."
+                pos_hint: {'center_x': 0.5}
+                color_mode : 'custom'
+                line_color_focus : get_color_from_hex('#000000')
+                fill_color : gch('#000000')
+            MDRaisedButton:
+                text: "Add your trusty..."
+                pos_hint: {'center_x': 0.5}
+                on_release: root.add_friend(field.text)
+        ScrollView:
+            MDList:
+                id : list
+        BottomNav:
+            id : btm_nav
+        
+        

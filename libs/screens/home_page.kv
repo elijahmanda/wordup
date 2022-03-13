@@ -1,0 +1,86 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import BottomNav libs.components.bottom_nav.BottomNav
+#:import BaseBox libs.components.base_box.BaseBox
+
+<AppBarHom@MDBoxLayout>
+    md_bg_color : gch('#b300b1')
+    padding : '5dp'
+    adaptive_height : True
+    
+    MDLabel :
+        text : 'Home'
+        theme_text_color : 'Custom'
+        text_color : gch('#ffffff')
+        halign : 'center'
+        valign : 'center'
+        font_size : 30
+        
+    MDIconButton :
+        id : left_btn
+        icon : 'logout'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+        on_release :
+            root.manager.current="signup_home"
+
+<HomePage>:
+    md_bg_color : get_color_from_hex('#ffffff')
+    
+    BaseBox :
+        orientation : 'vertical'
+        spacing : '1dp' 
+        AppBarHom:
+            id : app_bar
+        MDCard :
+            id : post_card
+            size_hint_y : None
+            height : '110dp'
+            elevation : 12
+            MDBoxLayout :
+                id : post_box
+                orientation : 'vertical'
+                size_hint : None, None
+                size : post_card.size
+                FloatLayout:
+                    size_hint : None, None
+                    size : post_box.size
+                    id : float_box
+                    MDTextField:
+                        id : word
+                        size_hint : None, None
+                        multiline : True
+                        max_text_length : 150
+                        max_height : float_box.height-dp(20)
+                        mode : 'fill'
+                        color_mode : 'custom'
+                        line_color_focus : get_color_from_hex('#000000')
+                        fill_color : gch('#000000')
+                        width : int(post_card.width *.8)
+                        pos_hint : {'center_x': .45, 'center_y': .60}
+                    MDIconButton:
+                        icon : 'send-outline'
+                        user_font_size : '32sp'
+                        pos_hint : {'center_x': .92, 'center_y': .60}
+                        on_release : root.post_card(word.text)
+                    MDLabel :
+                        text : 'Inspire someone...'
+                        size_hint_y : None
+                        font_name : 'Roboto.ttf'
+                        height : self.texture_size[1]
+                        font_style : 'Caption'
+                        pos_hint : {'center_x': .55, 'center_y': .13}
+                    MDIconButton:
+                        icon: "reload"
+                        pos_hint: {'center_x': 0.8,'center_y': 0.13}
+                        on_release: 
+                            carousel.clear_widgets()
+                            root.add_content()
+
+                        
+                    
+        Carousel:
+            id : carousel
+        BottomNav:
+            id : btm_nav
+        
+        

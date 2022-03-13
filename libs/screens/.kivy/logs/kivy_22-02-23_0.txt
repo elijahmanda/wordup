@@ -1,0 +1,19 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/WordUp/libs/screens/.kivy/logs/kivy_22-02-23_0.txt
+[WARNING] [Config      ] Upgrading configuration in progress.
+[WARNING] [Config      ] Older configuration version detected (0 instead of 21)
+[ERROR  ] Error when copying logo directory
+Traceback (most recent call last):
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py", line 343, in <module>
+    shutil.copytree(join(kivy_data_dir, 'logo'), icon_dir)
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/shutil.py", line 565, in copytree
+    return _copytree(entries=entries, src=src, dst=dst, symlinks=symlinks,
+  File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/shutil.py", line 521, in _copytree
+    raise Error(errors)
+shutil.Error: [('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-128.png', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon/kivy-icon-128.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-512.png', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon/kivy-icon-512.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-16.png', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon/kivy-icon-16.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-32.png', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon/kivy-icon-32.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-48.png', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon/kivy-icon-48.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-64.ico', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon/kivy-icon-64.ico', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-24.png', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon/kivy-icon-24.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-256.png', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon/kivy-icon-256.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo/kivy-icon-64.png', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon/kivy-icon-64.png', '[Errno 1] Operation not permitted'), ('/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/data/logo', '/storage/emulated/0/WordUp/libs/screens/.kivy/icon', '[Errno 1] Operation not permitted')]
+[INFO   ] Kivy: v2.0.0
+[INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.9.7 (default, Oct  9 2021, 08:02:40) 
+[GCC 11.1.0]
+[INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/bin/python3"
+[INFO   ] KivyMD: 0.104.2, git-bc7d1f5, 2021-06-06 (installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivymd/__init__.py")
+[INFO   ] Factory: 186 symbols loaded

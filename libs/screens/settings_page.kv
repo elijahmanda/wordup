@@ -1,0 +1,42 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import BottomNav libs.components.bottom_nav.BottomNav
+#:import BaseBox libs.components.base_box.BaseBox
+#:import gch kivy.utils.get_color_from_hex
+
+<AppBarSet@MDBoxLayout>
+    md_bg_color : gch('#b300b1')
+    padding : '5dp'
+    adaptive_height : True
+    
+    MDIconButton :
+        id : left_btn
+        icon : 'arrow-left'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+        on_release :
+            app.root.current='home'
+    MDLabel :
+        text : 'Settings'
+        theme_text_color : 'Custom'
+        text_color : gch('#ffffff')
+        halign : 'center'
+        valign : 'center'
+        font_size : 30
+        
+    MDIconButton :
+        id : right_btn
+        icon : 'information-outline'
+        theme_icon_color : 'Custom'
+        icon_color : gch('#ffffff')
+        
+<SettingsPage>:
+    md_bg_color : get_color_from_hex('#ffffff')
+    
+    BaseBox :
+        orientation : 'vertical'
+        AppBarSet:
+        MDLabel:
+            id : label
+            text : 'Settings'
+            halign : 'center'
+        
