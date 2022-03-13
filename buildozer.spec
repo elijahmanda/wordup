@@ -37,7 +37,7 @@ version = 1.2.5
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,kivymd==0.104.2,pillow==7.0.0,ffpyplayer,pyrebase4,requests
+requirements = python3,kivy,kivymd==0.104.2,pillow==7.0.0,ffpyplayer,pyrebase4,requests,plyer
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
