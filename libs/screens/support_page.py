@@ -25,7 +25,7 @@ class SupportPage(MDScreen):
             elif dest == "humanrights":
                 recipient="registrar-kshrc@karnataka.gov.in."
             subject = "Cyber abuse"
-            text = f"I'm experiencing online abuse and I in need help, my name is {read_fname()} {read_sname() my email is {read_email()}."
+            text = f"I'm experiencing online abuse and I in need help, my name is {read_fname()} {read_sname()} my email is {read_email()}."
             create_chooser = False
             email.send(recipient=recipient, subject=subject, text=text,
                        create_chooser=create_chooser)
