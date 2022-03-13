@@ -1,0 +1,55 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/WordUp/.kivy/logs/kivy_22-02-24_103.txt
+[INFO   ] Kivy: v2.0.0
+[INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.9.7 (default, Oct  9 2021, 08:02:40) 
+[GCC 11.1.0]
+[INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/bin/python3"
+[INFO   ] KivyMD: 1.0.0.dev0, git-Unknown, 2022-02-24 (installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivymd/__init__.py")
+[INFO   ] Factory: 186 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_pil (img_ffpyplayer ignored)
+[INFO   ] Text: Provider: sdl2
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL ES 2" graphics system
+[INFO   ] GL: Backend used <sdl2>
+[INFO   ] GL: OpenGL version <b'OpenGL ES 2.0'>
+[INFO   ] GL: OpenGL vendor <b'ARM'>
+[INFO   ] GL: OpenGL renderer <b'Mali-400 MP'>
+[INFO   ] GL: OpenGL parsed version: 2, 0
+[INFO   ] GL: Texture max size <4096>
+[INFO   ] GL: Texture max units <8>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[INFO   ] GL: NPOT texture support is available
+[WARNING] Deprecated property "<NumericProperty name=user_font_size>" of object "<kivymd.uix.button.button.MDIconButton object at 0xa0da8108>" was accessed, it will be removed in a future version
+[WARNING] Deprecated property "<OptionProperty name=theme_text_color>" of object "<kivymd.uix.button.button.MDIconButton object at 0xa0da8108>" was accessed, it will be removed in a future version
+[WARNING] Deprecated property "<OptionProperty name=color_mode>" of object "<kivymd.uix.textfield.textfield.MDTextField object at 0xa00fa258>" was accessed, it will be removed in a future version
+[WARNING] Deprecated property "<ColorProperty name=fill_color>" of object "<kivymd.uix.textfield.textfield.MDTextField object at 0xa00fa258>" was accessed, it will be removed in a future version
+[WARNING] FitImage: Note!
+In the near future the `FitImage` widget will be moved to the `kivymd.uix.fitimage` package.
+Use import of this widget like this:`from kivymd.uix.fitimage import FitImage`.
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/WordUp/main.py", line 33, in <module>
+[WARNING] stderr:     WordUpApp().run()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/app.py", line 949, in run
+[WARNING] stderr:     self._run_prepare()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/app.py", line 919, in _run_prepare
+[WARNING] stderr:     root = self.build()
+[WARNING] stderr:   File "/storage/emulated/0/WordUp/main.py", line 15, in build
+[WARNING] stderr:     sm.add_widget(HomePage())
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/uix/screenmanager.py", line 997, in add_widget
+[WARNING] stderr:     self.current = screen.name
+[WARNING] stderr:   File "kivy/properties.pyx", line 498, in kivy.properties.Property.__set__
+[WARNING] stderr:   File "kivy/properties.pyx", line 545, in kivy.properties.Property.set
+[WARNING] stderr:   File "kivy/properties.pyx", line 600, in kivy.properties.Property.dispatch
+[WARNING] stderr:   File "kivy/_event.pyx", line 1248, in kivy._event.EventObservers.dispatch
+[WARNING] stderr:   File "kivy/_event.pyx", line 1154, in kivy._event.EventObservers._dispatch
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/uix/screenmanager.py", line 1062, in on_current
+[WARNING] stderr:     screen.dispatch('on_enter')
+[WARNING] stderr:   File "kivy/_event.pyx", line 709, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "/storage/emulated/0/WordUp/libs/screens/home_page.py", line 40, in on_enter
+[WARNING] stderr:     md_bg_color=gch(self.style),
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/utils.py", line 120, in get_color_from_hex
+[WARNING] stderr:     value = [int(x, 16) / 255.
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/utils.py", line 120, in <listcomp>
+[WARNING] stderr:     value = [int(x, 16) / 255.
+[WARNING] stderr: ValueError: invalid literal for int() with base 16: 'elevat'
