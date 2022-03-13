@@ -27,7 +27,7 @@ class WordUpApp(MDApp):
         self.theme_cls.theme_style = 'Light'
         self.theme_cls.primary_palette = "DeepPurple"
         self.theme_cls.primary_hue = "500"
-        self.load_all_kv_files()
+        
         self.sm = ScreenManager(transition=SwapTransition())
         self.sm.add_widget(LoginPage())
         self.sm.add_widget(SignUp1())
@@ -50,14 +50,15 @@ class WordUpApp(MDApp):
         Builder.load_file('libs/screens/login.kv')
 
     def on_start(self):
-        return super().on_start()
+        self.load_all_kv_files()
 
     def on_pause(self):
         return super().on_pause()
 
     def on_resume(self):
         return super().on_resume()
-
+    
+    #Handle the back button
     def my_key_handler(self, window, keycode1, keycode2, text, modifiers):
         if keycode1 in [27, 1001]:
             if self.sm.current_screen.name not in ["login","signup_verify","signup_home","home"]:
