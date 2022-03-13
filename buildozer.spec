@@ -4,31 +4,32 @@
 title = WordUp
 
 # (str) Package name
-package.name = wordup_main
+package.name = wordup
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.wordup
+package.domain = org.word_up
 
 # (str) Source code where the main.py live
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,jpeg,json,ttf,otf
+
+source.include_exts = py,png,jpg,kv,atlas,ttf,otf,json,jpeg
 
 # (list) List of inclusions using pattern matching
-#source.include_patterns = assets/*,images/*.png
+source.include_patterns = assets/*,data/*,libs/*, CREDENTIALS.json
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = assets/, data/,libs/
+#source.exclude_dirs = tests, bin
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 1.1.0
+version = 1.2.5
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -36,13 +37,14 @@ version = 1.1.0
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements =python3,kivy==2.0.0rc4, kivymd,sdl2_ttf==2.0.15,pillow,android,plyer==2.0.0,requests,pyrebase
+requirements = python3,kivy,kivymd==0.104.2,pillow==7.0.0,ffpyplayer,pyrebase4,requests
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
-# requirements.source.kivy
+# requirements.source.kivy = ../../kivy
+
 # (list) Garden requirements
-#garden_requirements 
+#garden_requirements =
 
 # (str) Presplash of the application
 presplash.filename = %(source.dir)s/assets/logo.jpeg
@@ -122,7 +124,7 @@ android.permissions = INTERNET
 # agreements. This is intended for automation only. If set to False,
 # the default, you will be shown the license when first running
 # buildozer.
-android.accept_sdk_license = True
+#android.accept_sdk_license =True
 
 # (str) Android entry point, default is ok for Kivy-based app
 #android.entrypoint = org.renpy.android.PythonActivity
@@ -137,7 +139,7 @@ android.accept_sdk_license = True
 #android.whitelist_src =
 
 # (str) Path to a custom blacklist file
-#android.blacklist_src =
+#android.blacklist_src = ./blacklist.txt
 
 # (list) List of Java .jar files to add to the libs so that pyjnius can access
 # their classes. Don't add jars that you do not need, since extra jars can slow
@@ -212,7 +214,7 @@ android.accept_sdk_license = True
 #android.uses_library =
 
 # (str) Android logcat filters to use
-android.logcat_filters = *:S python:D
+#android.logcat_filters = *:S python:D
 
 # (bool) Copy library instead of making a libpymodules.so
 #android.copy_libs = 1
